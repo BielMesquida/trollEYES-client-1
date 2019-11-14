@@ -14,7 +14,7 @@ var miControlador = miModulo.controller(
             $scope.eliminar = function () {
                 $http({
                     method: 'POST',
-                    url: `http://localhost:8081/blogbuster/json?ob=post&op=remove&id=${$routeParams.id}`
+                    url: `http://localhost:8081/trolleyes/json?ob=post&op=remove&id=${$routeParams.id}`
                 }).then(function (response) {
                     if (response.data.status == 500) {
                         $scope.fallido = true;
@@ -32,7 +32,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'POST',
-                url: `http://localhost:8081/blogbuster/json?ob=post&op=get&id=${$routeParams.id}`
+                url: `http://localhost:8081/trolleyes/json?ob=post&op=get&id=${$routeParams.id}`
             }).then(function (response) {
                 const respuesta = response.data.message;
                 $scope.id = respuesta.id;

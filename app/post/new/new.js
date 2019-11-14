@@ -26,7 +26,7 @@ var miControlador = miModulo.controller(
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/blogbuster/json?ob=post&op=insert', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=post&op=insert', {
                         params: jsonToSend
                     })
                     .then(function (response) {

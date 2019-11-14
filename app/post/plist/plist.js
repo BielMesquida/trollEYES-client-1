@@ -15,7 +15,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/blogbuster/json?ob=post&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                url: 'http://localhost:8081/trolleyes/json?ob=post&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -23,7 +23,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/blogbuster/json?ob=post&op=getcount'
+                url: 'http://localhost:8081/trolleyes/json?ob=post&op=getcount'
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;

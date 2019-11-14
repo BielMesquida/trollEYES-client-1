@@ -2,7 +2,7 @@ miModulo.factory('promesasService', ['$http',
     function ($http) {
         return {
             ajaxGet: function (objeto, identificador) {
-                return $http.get('http://localhost:8081/blogbuster/json?ob=' + objeto + '&op=get&id=' + identificador);
+                return $http.get('http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=get&id=' + identificador);
             },
             ajaxUpdate: function (objeto, parametros) {
                 return $http({
@@ -11,21 +11,21 @@ miModulo.factory('promesasService', ['$http',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    url: 'http://localhost:8081/blogbuster/json?ob=' + objeto + '&op=update'
+                    url: 'http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=update'
                 })
-                //return $http.get('http://localhost:8081/blogbuster/json?ob=' + objeto + '&op=update', parametros);
+                //return $http.get('http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=update', parametros);
             },
             ajaxLogin: function (username, password) {
-                return $http.get('http://localhost:8081/blogbuster/json?ob=usuario&op=login&username=' + username + '&password=' + forge_sha256(password));
+                return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=login&username=' + username + '&password=' + forge_sha256(password));
             },
             ajaxLogout: function () {
-                return $http.get('http://localhost:8081/blogbuster/json?ob=usuario&op=logout');
+                return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=logout');
             },
             ajaxCheck: function () {
-                return $http.get('http://localhost:8081/blogbuster/json?ob=usuario&op=check');
+                return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=check');
             },
             ajaxFill: function (objeto, number) {
-                return $http.get('http://localhost:8081/blogbuster/json?ob=' + objeto + '&op=fill&number=' + number);
+                return $http.get('http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=fill&number=' + number);
             }
         }
     }
