@@ -1,2 +1,0 @@
-# trollEYES-client
-trollEYES-client
