@@ -8,21 +8,19 @@
 
   <div class="row">
     <div class="col-md-12">
-      <div class="card-deck mt-4" ng-repeat="post in pagina">
+      <div class="card-deck mt-4" ng-repeat="producto in pagina">
         <div class="card">
           <div class="card-header">
-            <h3>
-              <a href="#!/post/view/{{post.id}}">
-                <span class="font-weight-bold">{{post.titulo}}</span>                
+            <h5>
+              <a href="#!/producto/view/{{producto.id}}">
+                <span class="font-weight-bold">{{producto.descripcion}}</span>                
               </a>              
-            </h3>
-            <h6 class="float-right text-muted" ng-show="post.fecha">Fecha: {{post.fecha | stringToDate | date : "dd/MM/yyyy"}}</h6>
+            </h5>
           </div>
-          <div class="card-body">
-            <p class="card-text">{{post.cuerpo}}</p>
-          </div>
+          
           <div class="card-footer text-right">
-            <p class="card-text">{{post.etiquetas}}</p>
+            <p>{{producto.precio}}€</p>
+            <p><img src='{{producto.imagen}}'width=150px img></p>
           </div>
         </div>
       </div>

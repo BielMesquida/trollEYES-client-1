@@ -9,45 +9,45 @@ miModulo.config(['$routeProvider',
                 }
             }
         })
-        $routeProvider.when('/post/plist/:rpp/:page', {
-            templateUrl: 'app/post/plist/plist.html',
-            controller: 'postPlistController',
+        $routeProvider.when('/producto/plist/:rpp/:page', {
+            templateUrl: 'app/producto/plist/plist.html',
+            controller: 'productoPlistController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();
                 }
             }
         })
-        $routeProvider.when('/post/remove/:id', {
-            templateUrl: 'app/post/remove/remove.html',
-            controller: 'postRemoveController',
+        $routeProvider.when('/producto/remove/:id', {
+            templateUrl: 'app/producto/remove/remove.html',
+            controller: 'productoRemoveController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();
                 }
             }
         })
-        $routeProvider.when('/post/view/:id', {
-            templateUrl: 'app/post/view/view.html',
-            controller: 'postViewController',
+        $routeProvider.when('/producto/view/:id', {
+            templateUrl: 'app/producto/view/view.html',
+            controller: 'productoViewController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();
                 }
             }
         })
-        $routeProvider.when('/post/edit/:id', {
-            templateUrl: 'app/post/edit/edit.html',
-            controller: 'postEditController',
+        $routeProvider.when('/producto/edit/:id', {
+            templateUrl: 'app/producto/edit/edit.html',
+            controller: 'productoEditController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();
                 }
             }
         })
-        $routeProvider.when('/post/new', {
-            templateUrl: 'app/post/new/new.html',
-            controller: 'postNewController',
+        $routeProvider.when('/producto/new', {
+            templateUrl: 'app/producto/new/new.html',
+            controller: 'productoNewController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();
@@ -82,9 +82,9 @@ miModulo.config(['$routeProvider',
                 }
             }
         });
-        $routeProvider.when('/post/fill', {
-            templateUrl: 'app/post/fill/fill.html',
-            controller: 'postFillController',
+        $routeProvider.when('/producto/fill', {
+            templateUrl: 'app/producto/fill/fill.html',
+            controller: 'productoFillController',
             resolve: {
                 auth: function (promesasService) {
                     return promesasService.ajaxCheck();

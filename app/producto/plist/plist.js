@@ -1,40 +1,39 @@
 var miControlador = miModulo.controller(
-    "homeController",
-    ['$scope', '$http', 'auth', '$location', '$routeParams',
-        function ($scope, $http, auth, $location, $routeParams) {
+    "productoPlistController",
+    ['$scope', '$http', '$routeParams', '$location', 'auth',
+        function ($scope, $http, $routeParams, $location, auth) {
+            if (auth.data.status != 200) {
+                $location.path('/login');
+            }
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
 
-            $scope.controller = "homeController";
-
-            if (!$routeParams.page) {
-                $scope.paginaActual = 1;
-            } else {
-                $scope.paginaActual = parseInt($routeParams.page);
-            }
-            if (!$routeParams.rpp) {
-                $scope.rppActual = 10;
-            } else {
-                $scope.rppActual = parseInt($routeParams.rpp);
-            }
-            $scope.controller = "productoHomeController";
+            $scope.paginaActual = parseInt($routeParams.page);
+            $scope.rppActual = parseInt($routeParams.rpp);
+            $scope.rppS = [10, 50, 100];
+            $scope.controller = "productoPlistController";
 
             $http({
-                method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+                method: 'POST',
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
             }, function () {})
 
             $http({
-                method: 'GET',
+                method: 'POST',
                 url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount'
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
-                $scope.numPaginas = Math.ceil($scope.numRegistros / $scope.rppActual);
+                $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
                 $scope.calcPage = [];
+                for (const p of $scope.rppS) {
+                    const res = $scope.paginaActual / $scope.numPaginas;
+                    const next = Math.ceil($scope.numRegistros / p);
+                    $scope.calcPage.push(Math.round(res * next));
+                }
                 paginacion(2);
             }, function () {})
 
