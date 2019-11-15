@@ -1,31 +1,29 @@
 <ng-include src="'./app/menu.html'"></ng-include>
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1>trollEYES: la tienda de DAW</h1>
+  <div id="carta_producto" class="row" ng-repeat="producto in pagina">
+    <div class="col-3">
+      <img src='{{producto.imagen}}'>
     </div>
-  </div>
+    <div class="col-9" id="datos_ficha">
+      <div id="cod_tipo">
+        <p>{{producto.tipo_producto_obj.descripcion}}</p>
+        <p class="font-weight-bold">{{producto.codigo}}</p>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card-deck mt-4" ng-repeat="producto in pagina">
-        <div class="card">
-          <div class="card-header">
-            <h5>
-              <a href="#!/producto/view/{{producto.id}}">
-                <span class="font-weight-bold">{{producto.descripcion}}</span>                
-              </a>              
-            </h5>
-          </div>
-          
-          <div class="card-footer text-right">
-            <p>{{producto.precio}}€</p>
-            <p><img src='{{producto.imagen}}'width=150px img></p>
-          </div>
-        </div>
+      </div>
+      <a href="#!/producto/view/{{producto.id}}">
+        <h2>{{producto.descripcion}}</h2>
+      </a>
+      <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Solo nos queda(n) {{producto.existencias}}
+          en stock</strong></p>
+
+      <div id="cod_tipo">
+        <p>Precio: {{producto.precio}}€</p>
+        <button type="button" class="btn btn-primary">Añadir al carrito</button>
       </div>
     </div>
   </div>
+
+
   <br>
   <div class="row">
     <div class="col-md-12 ">
@@ -42,5 +40,3 @@
       </div>
     </div>
   </div>
-</div>
-<ng-include src="'./app/footer.html'"></ng-include>
