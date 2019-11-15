@@ -1,7 +1,7 @@
 miModulo.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.when('/', {
-            templateUrl: 'app/homeTemplate.html',
+            templateUrl: 'app/home/homeTemplate.html',
             controller: 'homeController',
             resolve: {
                 auth: function (promesasService) {
@@ -55,7 +55,7 @@ miModulo.config(['$routeProvider',
             }
         })
         $routeProvider.when('/home/:rpp/:page', {
-            templateUrl: 'app/homeTemplate.html',
+            templateUrl: 'app/home/homeTemplate.html',
             controller: 'homeController',
             resolve: {
                 auth: function (promesasService) {
@@ -91,6 +91,63 @@ miModulo.config(['$routeProvider',
                 }
             }
         });
+
+        //Usuario
+        $routeProvider.when('/usuario/plist/:rpp/:page', {
+            templateUrl: 'app/usuario/plist/plist.html',
+            controller: 'usuarioPlistController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
+        $routeProvider.when('/usuario/remove/:id', {
+            templateUrl: 'app/usuario/remove/remove.html',
+            controller: 'usuarioRemoveController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
+        $routeProvider.when('/usuario/view/:id', {
+            templateUrl: 'app/usuario/view/view.html',
+            controller: 'usuarioViewController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
+        $routeProvider.when('/usuario/edit/:id', {
+            templateUrl: 'app/usuario/edit/edit.html',
+            controller: 'usuarioEditController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
+        $routeProvider.when('/usuario/new', {
+            templateUrl: 'app/usuario/new/new.html',
+            controller: 'usuarioNewController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
+        $routeProvider.when('/usuario/fill', {
+            templateUrl: 'app/usuario/fill/fill.html',
+            controller: 'usuarioFillController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/'
         })
