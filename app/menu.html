@@ -12,7 +12,7 @@
       <li class="nav-item" ng-show="authStatus==200" ng-class="{'active':(controller=='productoNewController')}">
         <a class="nav-link" href="#!/producto/new">Nuevo producto</a>
       </li>
-      <li class="nav-item" ng-show="authStatus==200" ng-class="{'active':(controller=='productoFillController')}">
+      <li class="nav-item" ng-show="authUsername.tipo_usuario_obj.id==1" ng-class="{'active':(controller=='productoFillController')}">
         <a class="nav-link" href="#!/producto/fill">Creación masiva aleatoria de productos</a>
       </li>
     </ul>
