@@ -36,13 +36,13 @@ var miControlador = miModulo.controller(
 
             $scope.modificar = function () {
                 const datos = {
-                    id: $routeParams.id,
+                    id: parseInt($routeParams.id),
                     codigo: $scope.codigo,
-                    existencias: $scope.existencias,
+                    existencias: parseInt($scope.existencias),
                     precio: $scope.precio,
                     imagen: $scope.imagen,
                     descripcion: $scope.descripcion,
-                    tipo_producto_id: $scope.tipo_producto_id
+                    tipo_producto_id: parseInt($scope.tipo_producto_id)
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)
