@@ -1,7 +1,7 @@
 <ng-include src="'./app/menu.html'"></ng-include>
 <div class="container">
     <div class="row">
-        <h1 class="md-4">Vista de usuario</h1>
+        <h1 class="md-4">Vista de producto</h1>
         <table class="table table-bordered table-hover" ng-show="!fallo">
             <tr>
                 <th> Campo </th>
@@ -28,8 +28,8 @@
                 <td> {{precio}} </td>
             </tr>
             <tr>
-                <th> Tipo usuario: </th>
-                <td> {{tipo_usuario_obj.descripcion}} </td>
+                <th> Tipo producto: </th>
+                <td> {{tipo_producto_obj.descripcion}} </td>
             </tr> 
             <tr>
                 <th> Imagen: </th>
@@ -38,7 +38,7 @@
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" class="btn btn-primary" href="#!/usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <a type="button" class="btn btn-primary" href="#!/producto/edit/{{id}}" ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
         </div>

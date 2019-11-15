@@ -1,12 +1,12 @@
 var miControlador = miModulo.controller(
-    "usuarioViewController",
+    "productoViewController",
     ['$scope', '$http', '$routeParams', 'auth', 'promesasService',
 
         function ($scope, $http, $routeParams, auth, promesasService) {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
             //--
-            $scope.controller = "usuarioViewController";
+            $scope.controller = "productoViewController";
             //--
             $scope.id = $routeParams.id;
             //--
@@ -14,13 +14,13 @@ var miControlador = miModulo.controller(
             $scope.hecho = false;
             $scope.falloMensaje = "";
             //--
-            promesasService.ajaxGet('usuario', $scope.id).then(function (response) {
+            promesasService.ajaxGet('producto', $scope.id).then(function (response) {
                 $scope.id = response.data.message.id;
                 $scope.descripcion = response.data.message.descripcion;
                 $scope.codigo = response.data.message.codigo;
                 $scope.existencias = response.data.message.existencias;
                 $scope.precio = response.data.message.precio;
-                $scope.tipo_usuario_obj = response.data.message.tipo_usuario_obj;
+                $scope.tipo_producto_obj = response.data.message.tipo_producto_obj;
                 $scope.imagen = response.data.message.imagen;
             }, function () {
                 $scope.fallo = true;
