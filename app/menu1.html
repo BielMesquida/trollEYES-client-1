@@ -1,0 +1,42 @@
+<nav class=" navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#!/home">TrollEYES</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      
+      <li class="nav-item" ng-show="authStatus==200" ng-class="{'active':(controller=='productoPlistController')}">
+        <a class="nav-link" href="#!/producto/plist/10/1">Listado de productos</a>
+      </li>
+      <li class="nav-item" ng-show="authStatus==200" ng-class="{'active':(controller=='productoNewController')}">
+        <a class="nav-link" href="#!/producto/new">Nuevo producto</a>
+      </li>
+      <li class="nav-item" ng-show="authUsername.tipo_usuario_obj.id==1" ng-class="{'active':(controller=='productoFillController')}">
+        <a class="nav-link" href="#!/producto/fill">Creación masiva aleatoria de productos</a>
+      </li>
+    </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav align-self-end" id="nav">
+        <li class="nav-item" ng-show="authStatus!=200">
+          <a class="nav-link" ng-class="{'active': sitio=='login'}" href="#!/login">Iniciar Sesión <i
+              class="fas fa-sign-in-alt"></i></a>
+        </li>
+        <li class="nav-item" ng-show="authStatus==200">
+          <span class="nav-link">Usuari: {{authUsername.nombre+" "+authUsername.apellido1+" "+authUsername.apellido2}}</span>
+        </li>
+        <li class="nav-item" ng-show="authStatus==200">
+          <a class="nav-link" ng-class="{'active': sitio=='logout'}" href="#!/logout">Cerrar Sesión <i
+              class="fas fa-sign-out-alt"></i></a>
+        </li>
+      </ul>
+    </div>
+    <form class="form-inline my-2 my-lg-0">
+  </div>
+</nav>
