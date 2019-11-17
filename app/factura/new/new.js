@@ -1,5 +1,5 @@
 var miControlador = miModulo.controller(
-    "usuarioNewController",
+    "facturaNewController",
     ['$scope', '$http', '$routeParams', '$window', 'promesasService', 'auth', '$location',
         function ($scope, $http, $routeParams, $window, promesasService, auth, $location) {
             $scope.authStatus = auth.data.status;
@@ -9,29 +9,23 @@ var miControlador = miModulo.controller(
             }
             //--
             $scope.id = $routeParams.id;
-            $scope.controller = "usuarioNewController";
+            $scope.controller = "facturaNewController";
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
             //--
             $scope.guardar = function () {
                 const datos = {
-                    id: $routeParams.id,
-                    dni: $scope.dni,
-                    nombre: $scope.nombre,
-                    apellido1: $scope.apellido1,
-                    apellido2: $scope.apellido2,
-                    login: $scope.login,
-                    password: forge_sha256($scope.password),
-                    email: $scope.email,
-                    tipo_usuario_id: $scope.tipo_usuario_id
-                    
+                    id: parseInt($routeParams.id),
+                    fecha: $scope.fecha,
+                    iva: parseInt($scope.iva),
+                    usuario_id: $scope.usuario_id,
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=insert', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=factura&op=insert', {
                         params: jsonToSend
                     })
                     .then(function (response) {

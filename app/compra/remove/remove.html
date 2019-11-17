@@ -1,0 +1,45 @@
+<ng-include src="'./app/menu.html'"></ng-include>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="mb-4">Borrado de compra</h1>
+            <div ng-if="hecho">
+                <div class="alert alert-danger" role="alert" ng-if="fallido">No se ha podido borrar el compra</div>
+                <div class="alert alert-success" role="alert" ng-if="!fallido">El compra se ha borrado con exito</div>
+            </div>
+            <table class="table table-bordered table-hover" ng-show="!hecho">
+                    <tr>
+                            <th> Campo </th>
+                            <th> Valor </th>
+                        </tr>
+                        <tr>
+                            <th> Id: </th>
+                            <td> {{id}} </td>
+                        </tr>
+                        <tr>
+                            <th> Cantidad: </th>
+                            <td> {{cantidad}} </td>
+                        </tr>
+                        <tr>
+                            <th> Id de factura: </th>
+                            <td> {{factura_id}} </td>
+                        </tr>
+                        <tr>
+                            <th> Id de product: </th>
+                            <td> {{producto_id}} </td>
+                        </tr>
+                      
+            </table>
+
+            <div class="float-right">
+                <div class="my-3" ng-if="!hecho">¿Estas seguro de eliminar el compra?</div>
+                <div>
+                    <button type="button" class="btn btn-danger" ng-click="eliminar()" ng-if="!hecho">Eliminar</button>
+                    <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-include src="'./app/footer.html'"></ng-include>

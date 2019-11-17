@@ -1,5 +1,5 @@
 var miControlador = miModulo.controller(
-    "usuarioEditController",
+    "compraEditController",
     ['$scope', '$http', '$routeParams', '$window', '$location', 'promesasService', 'auth', '$filter',
         function ($scope, $http, $routeParams, $window, $location, promesasService, auth, $filter) {
             $scope.authStatus = auth.data.status;
@@ -13,22 +13,19 @@ var miControlador = miModulo.controller(
             //--
             $scope.id = $routeParams.id;
             //--
-            $scope.controller = "usuarioEditController";
+            $scope.controller = "compraEditController";
             //--
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
             //--
-            promesasService.ajaxGet('usuario', $scope.id)
+            promesasService.ajaxGet('compra', $scope.id)
                 .then(function (response) {
                     $scope.id = response.data.message.id;
-                    $scope.dni = response.data.message.dni;
-                    $scope.nombre = response.data.message.nombre;
-                    $scope.apellido1 = response.data.message.apellido1;
-                    $scope.apellido2 = response.data.message.apellido2;
-                    $scope.tipo_usuario_obj = response.data.message.tipo_usuario_obj;
-                    $scope.login = response.data.message.login;
-                    $scope.email = response.data.message.email;
+                    $scope.cantidad = response.data.message.cantidad;
+                    $scope.factura_id = response.data.message.factura_obj.id;
+                    $scope.producto_id = response.data.message.producto_obj.id;
+                  
                   
                 }, function (error) {
                     $scope.fallo = true;
@@ -36,21 +33,19 @@ var miControlador = miModulo.controller(
 
             $scope.modificar = function () {
                 const datos = {
-                    id: $routeParams.id,
-                    dni: $scope.dni,
-                    nombre: $scope.nombre,
-                    apellido1: $scope.apellido1,
-                    apellido2: $scope.apellido2,
-                    login: $scope.login,
-                    password: forge_sha256($scope.password),
-                    email: $scope.email,
-                    tipo_usuario_id: $scope.tipo_usuario_id
-                                    }
+                    id: parseInt($routeParams.id),
+                    codigo: $scope.codigo,
+                    existencias: parseInt($scope.existencias),
+                    precio: $scope.precio,
+                    imagen: $scope.imagen,
+                    descripcion: $scope.descripcion,
+                    tipo_compra_id: parseInt($scope.tipo_compra_id)
+                }
                 var jsonToSend = {
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=update', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=compra&op=update', {
                         params: jsonToSend
                     })
                     .then(function (response) {
