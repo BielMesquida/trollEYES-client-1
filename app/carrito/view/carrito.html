@@ -1,0 +1,35 @@
+<ng-include src="'./app/menu.html'"></ng-include>
+<div class="container">
+    <h2>Carro:</h2>
+    <div id="carta_producto" class="row" ng-repeat="producto in carritoProducto">
+        <div class="col-3">
+            <img src='{{producto.imagen}}' height="180px" width="180px">
+        </div>
+        <div class="col-9" id="datos_ficha">
+            <div id="cod_tipo">
+                <p>{{producto.tipo_producto_obj.descripcion}}</p>
+                <p class="font-weight-bold">{{producto.codigo}}</p>
+
+            </div>
+            <a href="#!/producto/view/{{producto.id}}">
+                <h2>{{producto.descripcion}}</h2>
+            </a>
+            <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Solo nos queda(n)
+                    {{producto.existencias}}
+                    en stock</strong></p>
+
+            <div id="cod_tipo">
+                <p>Cantidad: {{producto.cantidad}}   Precio: {{producto.precio}}€</p>
+                <div>
+                <button type="button" class="btn btn-primary" ng-click="addCarrito(producto.id,1)">Añadir uno</button>
+                <button type="button" class="btn btn-danger" ng-click="delCarrito(producto.id,1)">Eliminar uno</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row" id="cod_tipo">
+        <button type="button" class="btn btn-primary" ng-click="comprar()">Comprar</button>
+        <h3>Total:{{total}}€</h3>
+    </div>
+</div>

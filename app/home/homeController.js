@@ -4,7 +4,6 @@ var miControlador = miModulo.controller(
         function ($scope, $http, auth, $location, $routeParams) {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
-
             $scope.controller = "homeController";
 
             if (!$routeParams.page) {
@@ -25,7 +24,7 @@ var miControlador = miModulo.controller(
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
-            }, function () {})
+            }, function () { })
 
             $http({
                 method: 'GET',
@@ -36,7 +35,7 @@ var miControlador = miModulo.controller(
                 $scope.numPaginas = Math.ceil($scope.numRegistros / $scope.rppActual);
                 $scope.calcPage = [];
                 paginacion(2);
-            }, function () {})
+            }, function () { })
 
             function paginacion(vecindad) {
                 vecindad++;
@@ -54,9 +53,19 @@ var miControlador = miModulo.controller(
                 }
             }
 
+            $scope.addCarrito = function(idProducto, cantidad) {
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=add&id='+idProducto+'&cantidad='+cantidad
+                }).then(function (response) {
+                    if (response.status == 200) {
+                        alert("Producto añadido al carrito con exito")
+                    } else {
+                        alert("Fallo al añadir el producto")
+                    }
 
-
-
+                })
+            }
         }
     ]
 )
