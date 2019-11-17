@@ -147,7 +147,24 @@ miModulo.config(['$routeProvider',
                 }
             }
         });
-
+        $routeProvider.when('/carrito', {
+            templateUrl: 'app/carrito/view/carrito.html',
+            controller: 'carritoController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        });
+        $routeProvider.when('/comprar', {
+            templateUrl: 'app/carrito/comprar/comprar.html',
+            controller: 'comprarController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        });
         $routeProvider.otherwise({
             redirectTo: '/'
         })

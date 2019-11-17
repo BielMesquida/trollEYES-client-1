@@ -2,7 +2,7 @@
 <div class="container">
   <div id="carta_producto" class="row" ng-repeat="producto in pagina">
     <div class="col-3">
-      <img src='{{producto.imagen}}'>
+      <img src='{{producto.imagen}}' height="180px" width="180px">
     </div>
     <div class="col-9" id="datos_ficha">
       <div id="cod_tipo">
@@ -18,7 +18,7 @@
 
       <div id="cod_tipo">
         <p>Precio: {{producto.precio}}€</p>
-        <button type="button" class="btn btn-primary">Añadir al carrito</button>
+        <button type="button" class="btn btn-primary" ng-click="addCarrito(producto.id,1)">Añadir al carrito</button>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
   <br>
   <div class="row">
     <div class="col-md-12 ">
-      <div class="btn-toolbar">
+      <div class="btn-toolbar  justify-content-center">
         <nav aria-label="Paginación">
           <ul class="pagination">
             <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
