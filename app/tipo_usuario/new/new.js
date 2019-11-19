@@ -1,5 +1,5 @@
 var miControlador = miModulo.controller(
-    "productoNewController",
+    "tipo_usuarioNewController",
     ['$scope', '$http', '$routeParams', '$window', 'promesasService', 'auth', '$location',
         function ($scope, $http, $routeParams, $window, promesasService, auth, $location) {
             $scope.authStatus = auth.data.status;
@@ -9,28 +9,22 @@ var miControlador = miModulo.controller(
             }
             //--
             $scope.id = $routeParams.id;
-            $scope.tipo_producto_id="";
-            $scope.tipo_producto_descripcion="";
-            $scope.controller = "productoNewController";
+            $scope.controller = "tipo_usuarioNewController";
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
             //--
             $scope.guardar = function () {
                 const datos = {
-                    id: $routeParams.id,
-                    codigo: $scope.codigo,
-                    existencias: $scope.existencias,
-                    precio: $scope.precio,
-                    imagen: $scope.imagen,
+                    id: parseInt($routeParams.id),
                     descripcion: $scope.descripcion,
-                    tipo_producto_id: $scope.tipo_producto_id
+                   
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=producto&op=insert', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=insert', {
                         params: jsonToSend
                     })
                     .then(function (response) {
