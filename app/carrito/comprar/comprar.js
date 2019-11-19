@@ -14,6 +14,7 @@ var miControlador = miModulo.controller(
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.message = response.data.message;
+                $location.path('/compra/plist/10/1/'+$scope.message);
             })
         }
     ]
