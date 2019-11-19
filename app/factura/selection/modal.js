@@ -1,9 +1,8 @@
-miModulo.component('tipousuariomodal', {
+miModulo.component('facturamodal', {
     //restrict: 'A',
-    templateUrl: 'app/tipo_usuario/selection/modal.html',
+    templateUrl: 'app/factura/selection/modal.html',
     bindings: {
-        idtipousuario: '=',
-        descripcion: '='
+        idfactura: '=',
     },
     controllerAs: 'c',
     controller: addModalVarController
@@ -12,8 +11,7 @@ miModulo.component('tipousuariomodal', {
 function addModalVarController($http,$scope) {
     var self = this;
     arrayDeVariables = {
-        tipo_usuario_descripcion: "",
-        tipo_usuario_id: ""
+        factura_id: "",
     }
 
     $scope.paginaActual = 1;
@@ -22,7 +20,7 @@ function addModalVarController($http,$scope) {
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+        url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.pagina = response.data.message;
@@ -30,7 +28,7 @@ function addModalVarController($http,$scope) {
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getcount'
+        url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount'
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.numRegistros = response.data.message;
@@ -63,7 +61,7 @@ function addModalVarController($http,$scope) {
          $scope.paginaActual = p;
         $http({
             method: 'POST',
-            url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+            url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
         }).then(function (response) {
             $scope.status = response.data.status;
             $scope.pagina = response.data.message;
@@ -75,14 +73,14 @@ function addModalVarController($http,$scope) {
         $scope.rppActual = r;
        $http({
            method: 'POST',
-           url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+           url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
        }).then(function (response) {
            $scope.status = response.data.status;
            $scope.pagina = response.data.message;
        }, function () {})
        $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getcount'
+        url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount'
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.numRegistros = response.data.message;
@@ -99,9 +97,10 @@ function addModalVarController($http,$scope) {
    
      }
      
-     $scope.seleccionar = function(tipo_usuario_id, tipo_usuario_descripcion){
-        self.idtipousuario = tipo_usuario_id;
-        self.descripcion = tipo_usuario_descripcion;
+     $scope.seleccionar = function(factura_id){
+        self.idfactura = factura_id;
+     
+
        
      }
 }

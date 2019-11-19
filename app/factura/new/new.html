@@ -30,17 +30,23 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="usuario_id" class="col-sm-2 col-form-label">Id usuario:</label>
+              <label for="usuario_id" class="col-sm-2 col-form-label">Usuario:</label>
               <div class="col-sm-10">
-                <input type="text" ng-model="usuario_id" class="form-control"
-                  ng-class="{ 'is-invalid' : !userForm.usuario_id.$valid && !userForm.usuario_id.$pristine}" name="usuario_id"
-                  ng-required="true" value="{{factura.usuario_id}}" />
-                <div class="invalid-feedback" ng-show="userForm.usuario_id.$error.pattern">
-                  El operando introducido es incorrecto, sólo debe llevar números
-                </div>
-              </div>
-            </div>
-       
+                  <div class="input-group mb-2 mr-sm-2">
+                    <div class="input-group-prepend">
+                      <div class="btn-secondary btn" data-toggle="modal" data-target="#modalUsuario">  
+                              <i class="fas fa-search"></i>
+                     </div>
+                    </div>
+                    <input type="text" ng-model="usuario_login" class="form-control"
+                    ng-class="{ 'is-invalid' : !userForm.usuario_id.$valid && !userForm.usuario_id.$pristine}" name="usuario_id"
+                    ng-required="true" value="{{usuario_login}}" />              </div>
+                  </div>
+           
+    
+                  <usuariomodal class="modal fade" id="modalUsuario" idusuario="usuario_id" login="usuario_login"></usuariosmodal>
+    
+          </div>
         <div class="float-right">
           <button type="button" class="btn btn-primary" ng-click="guardar()">Crear nuevo compra</button>
         </div>

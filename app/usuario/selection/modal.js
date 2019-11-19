@@ -1,9 +1,9 @@
-miModulo.component('caddModalVar', {
+miModulo.component('usuariomodal', {
     //restrict: 'A',
-    templateUrl: 'app/tipo_producto/selection/modal.html',
+    templateUrl: 'app/usuario/selection/modal.html',
     bindings: {
-        idtipoproducto: '=',
-        descripcion: '='
+        idusuario: '=',
+        login: '='
     },
     controllerAs: 'c',
     controller: addModalVarController
@@ -12,8 +12,8 @@ miModulo.component('caddModalVar', {
 function addModalVarController($http,$scope) {
     var self = this;
     arrayDeVariables = {
-        tipo_producto_descripcion: "",
-        tipo_producto_id: ""
+        usuario_login: "",
+        usuario_id: ""
     }
 
     $scope.paginaActual = 1;
@@ -22,7 +22,7 @@ function addModalVarController($http,$scope) {
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+        url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.pagina = response.data.message;
@@ -30,7 +30,7 @@ function addModalVarController($http,$scope) {
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getcount'
+        url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.numRegistros = response.data.message;
@@ -63,7 +63,7 @@ function addModalVarController($http,$scope) {
          $scope.paginaActual = p;
         $http({
             method: 'POST',
-            url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+            url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
         }).then(function (response) {
             $scope.status = response.data.status;
             $scope.pagina = response.data.message;
@@ -75,14 +75,14 @@ function addModalVarController($http,$scope) {
         $scope.rppActual = r;
        $http({
            method: 'POST',
-           url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+           url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
        }).then(function (response) {
            $scope.status = response.data.status;
            $scope.pagina = response.data.message;
        }, function () {})
        $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getcount'
+        url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.numRegistros = response.data.message;
@@ -99,9 +99,9 @@ function addModalVarController($http,$scope) {
    
      }
      
-     $scope.seleccionar = function(tipo_producto_id, tipo_producto_descripcion){
-        self.idtipoproducto = tipo_producto_id;
-        self.descripcion = tipo_producto_descripcion;
+     $scope.seleccionar = function(usuario_id, usuario_login){
+        self.idusuario = usuario_id;
+        self.login = usuario_login;
        
      }
 }

@@ -1,4 +1,4 @@
-miModulo.component('caddModalVar', {
+miModulo.component('tipoproductomodal', {
     //restrict: 'A',
     templateUrl: 'app/tipo_producto/selection/modal.html',
     bindings: {
