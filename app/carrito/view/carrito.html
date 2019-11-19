@@ -19,11 +19,16 @@
                     en stock</strong></p>
 
             <div id="cod_tipo">
-                <p>Cantidad: {{producto.cantidad}}   Precio: {{producto.precio}}€</p>
+                <p>Cantidad: {{producto.cantidad}} | Precio: {{producto.precio}}€</p>
                 <div>
-                <button type="button" class="btn btn-primary" ng-click="addCarrito(producto.id,1)">Añadir uno</button>
-                <button type="button" class="btn btn-danger" ng-click="delCarrito(producto.id,1)">Eliminar uno</button>
-            </div>
+                    <form class="form-group row" id="cod_tipo">
+                        <input class="col-3" type="number" value=1 ng-model="cantidad">
+                        <button type="button" class="btn btn-primary col-4"
+                            ng-click="addCarrito(producto.id,cantidad)">Añadir</button>
+                        <button type="button" class="btn btn-danger col-4"
+                            ng-click="delCarrito(producto.id,cantidad)">Eliminar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

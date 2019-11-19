@@ -5,6 +5,7 @@ var miControlador = miModulo.controller(
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
             $scope.controller = "homeController";
+            $scope.cantidad = 1;
 
             if (!$routeParams.page) {
                 $scope.paginaActual = 1;
