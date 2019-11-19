@@ -13,13 +13,24 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "facturaPlistController";
 
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-            }).then(function (response) {
-                $scope.status = response.data.status;
-                $scope.pagina = response.data.message;
-            }, function () {})
+            if ($scope.authUsername.tipo_usuario_obj.id == 1){
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () {})
+            } else {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=factura&op=listusuario&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&usuario=' + $scope.authUsername.id
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () {})
+            }
+            
 
             $http({
                 method: 'POST',
