@@ -37,15 +37,17 @@
                     <table class="table">
                       <tr>
                         <th>Id</th>
-                        <th>Nombre de usuario</th>
+                        <th>Codigo</th>
+                        <th>Descripcion</th>
                         <th>Seleccionar</th>
                       </tr>
                       <tr ng-repeat="fila in pagina">
                         <td>{{ fila.id }}</td>
-                        <td>{{ fila.login }}</td>
+                        <td>{{ fila.codigo }}</td>
+                        <td>{{fila.descripcion}}</td>
                         <td>
                           <div class="btn-group" role="group" aria-label="Basic example">
-                            <a class="btn btn-secondary"  data-dismiss="modal" ng-click="seleccionar(fila.id, fila.login)"><i class="fas fa-eye"></i></a>
+                            <a class="btn btn-secondary"  data-dismiss="modal" ng-click="seleccionar(fila.id, fila.descripcion)"><i class="fas fa-eye"></i></a>
                           </div>
                         </td>
                       </tr>
