@@ -7,20 +7,23 @@ var miControlador = miModulo.controller(
             }
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
-
+            $scope.titulo = "Listado de compras";
+            if($scope.authUsername.tipo_usuario_obj.id == 2){
+                $scope.titulo = "Factura ("+$routeParams.facturaId+")";
+            }
             $scope.paginaActual = parseInt($routeParams.page);
             $scope.rppActual = parseInt($routeParams.rpp);
             $scope.rppS = [10, 50, 100];
             $scope.controller = "compraPlistController";
 
-            if($routeParams.facturaId == null){
+            if ($routeParams.facturaId == null) {
                 $http({
                     method: 'POST',
                     url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
                 }).then(function (response) {
                     $scope.status = response.data.status;
                     $scope.pagina = response.data.message;
-                }, function () {})
+                }, function () { })
             } else {
                 $http({
                     method: 'POST',
@@ -28,25 +31,42 @@ var miControlador = miModulo.controller(
                 }).then(function (response) {
                     $scope.status = response.data.status;
                     $scope.pagina = response.data.message;
-                }, function () {})
+                }, function () { })
             }
-            
 
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'
-            }).then(function (response) {
-                $scope.status = response.data.status;
-                $scope.numRegistros = response.data.message;
-                $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
-                $scope.calcPage = [];
-                for (const p of $scope.rppS) {
-                    const res = $scope.paginaActual / $scope.numPaginas;
-                    const next = Math.ceil($scope.numRegistros / p);
-                    $scope.calcPage.push(Math.round(res * next));
-                }
-                paginacion(2);
-            }, function () {})
+            if ($routeParams.facturaId == null) {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.numRegistros = response.data.message;
+                    $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
+                    $scope.calcPage = [];
+                    for (const p of $scope.rppS) {
+                        const res = $scope.paginaActual / $scope.numPaginas;
+                        const next = Math.ceil($scope.numRegistros / p);
+                        $scope.calcPage.push(Math.round(res * next));
+                    }
+                    paginacion(2);
+                }, function () { })
+            } else {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=listfacturacount&factura='+$routeParams.facturaId
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.numRegistros = response.data.message;
+                    $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
+                    $scope.calcPage = [];
+                    for (const p of $scope.rppS) {
+                        const res = $scope.paginaActual / $scope.numPaginas;
+                        const next = Math.ceil($scope.numRegistros / p);
+                        $scope.calcPage.push(Math.round(res * next));
+                    }
+                    paginacion(2);
+                }, function () { })
+            }
 
             function paginacion(vecindad) {
                 vecindad++;
