@@ -13,13 +13,24 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "compraPlistController";
 
-            $http({
-                method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-            }).then(function (response) {
-                $scope.status = response.data.status;
-                $scope.pagina = response.data.message;
-            }, function () {})
+            if($routeParams.facturaId == null){
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () {})
+            } else {
+                $http({
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=listfactura&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&factura=' + $routeParams.facturaId
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () {})
+            }
+            
 
             $http({
                 method: 'POST',

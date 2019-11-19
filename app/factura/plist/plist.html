@@ -41,7 +41,8 @@
          
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <a class="btn btn-secondary" href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
+              <a class="btn btn-secondary" ng-show="authUsername.tipo_usuario_obj.id==1" href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
+              <a class="btn btn-secondary" ng-show="authUsername.tipo_usuario_obj.id!=1" href="#!/compra/plist/10/1/{{ fila.id }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-secondary" href="#!/factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
               <a class="btn btn-secondary" href="#!/factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
