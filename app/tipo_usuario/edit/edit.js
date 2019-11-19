@@ -1,42 +1,52 @@
 var miControlador = miModulo.controller(
-    "productoNewController",
-    ['$scope', '$http', '$routeParams', '$window', 'promesasService', 'auth', '$location',
-        function ($scope, $http, $routeParams, $window, promesasService, auth, $location) {
+    "tipo_usuarioEditController",
+    ['$scope', '$http', '$routeParams', '$window', '$location', 'promesasService', 'auth', '$filter',
+        function ($scope, $http, $routeParams, $window, $location, promesasService, auth, $filter) {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
             if ($scope.authStatus != 200) {
                 $location.path('/login');
             }
             //--
+            $scope.fecha = new Date();
+            //$scope.isOpen = false;
+            //--
             $scope.id = $routeParams.id;
-            $scope.tipo_producto_id="";
-            $scope.tipo_producto_descripcion="";
-            $scope.controller = "productoNewController";
+            //--
+            $scope.controller = "tipo_usuarioEditController";
+            //--
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
             //--
-            $scope.guardar = function () {
+            promesasService.ajaxGet('tipo_usuario', $scope.id)
+                .then(function (response) {
+                    $scope.id = response.data.message.id;
+                    $scope.descripcion = response.data.message.descripcion;
+                   
+                  
+                  
+                }, function (error) {
+                    $scope.fallo = true;
+                });
+
+            $scope.modificar = function () {
                 const datos = {
-                    id: $routeParams.id,
-                    codigo: $scope.codigo,
-                    existencias: $scope.existencias,
-                    precio: $scope.precio,
-                    imagen: $scope.imagen,
+                    id: parseInt($routeParams.id),
                     descripcion: $scope.descripcion,
-                    tipo_producto_id: $scope.tipo_producto_id
+                   
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=producto&op=insert', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=update', {
                         params: jsonToSend
                     })
                     .then(function (response) {
                         if (response.data.status != 200) {
                             $scope.fallo = true;
-                            $scope.falloMensaje = response.data.response;
+                            $scope.falloMensaje = response.data.message;
                         } else {
                             $scope.fallo = false;
                         }

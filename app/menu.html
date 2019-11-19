@@ -85,6 +85,20 @@
             ng-class="{'active':(controller=='usuarioFillController')}" href="#!/usuario/fill">Creación aleatoria</a>
       </li>
     </ul>
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Tipo Usuario
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
+              ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/tipo_usuario/plist/10/1">Listado</a>
+            <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
+              ng-class="{'active':(controller=='usuarioNewController')}" href="#!/tipo_usuario/new">Nuevo</a>
+           
+        </li>
+      </ul>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav align-self-end" id="nav">
         <li class="nav-item" ng-show="true">

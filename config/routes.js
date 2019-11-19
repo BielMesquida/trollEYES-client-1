@@ -312,6 +312,61 @@ $routeProvider.when('/tipo_producto/fill', {
         }
     }
 });
+//Tipo usuario
+$routeProvider.when('/tipo_usuario/plist/:rpp/:page', {
+    templateUrl: 'app/tipo_usuario/plist/plist.html',
+    controller: 'tipo_usuarioPlistController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+})
+$routeProvider.when('/tipo_usuario/remove/:id', {
+    templateUrl: 'app/tipo_usuario/remove/remove.html',
+    controller: 'tipo_usuarioRemoveController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+})
+$routeProvider.when('/tipo_usuario/view/:id', {
+    templateUrl: 'app/tipo_usuario/view/view.html',
+    controller: 'tipo_usuarioViewController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+})
+$routeProvider.when('/tipo_usuario/edit/:id', {
+    templateUrl: 'app/tipo_usuario/edit/edit.html',
+    controller: 'tipo_usuarioEditController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+})
+$routeProvider.when('/tipo_usuario/new', {
+    templateUrl: 'app/tipo_usuario/new/new.html',
+    controller: 'tipo_usuarioNewController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+})
+$routeProvider.when('/tipo_usuario/fill', {
+    templateUrl: 'app/tipo_usuario/fill/fill.html',
+    controller: 'tipo_usuarioFillController',
+    resolve: {
+        auth: function (promesasService) {
+            return promesasService.ajaxCheck();
+        }
+    }
+});
 //
         $routeProvider.when('/carrito', {
             templateUrl: 'app/carrito/view/carrito.html',
@@ -331,6 +386,7 @@ $routeProvider.when('/tipo_producto/fill', {
                 }
             }
         });
+
         $routeProvider.otherwise({
             redirectTo: '/'
         })

@@ -1,0 +1,29 @@
+<ng-include src="'./app/menu.html'"></ng-include>
+<div class="container">
+    <div class="row">
+        <h1 class="md-4">Vista de tipo_usuario</h1>
+        <table class="table table-bordered table-hover" ng-show="!fallo">
+            <tr>
+                <th> Campo </th>
+                <th> Valor </th>
+            </tr>
+            <tr>
+                <th> Id: </th>
+                <td> {{id}} </td>
+            </tr>
+            <tr>
+                <th> Fecha: </th>
+                <td> {{descripcion}} </td>
+            </tr>
+            
+          
+        </table>
+        <div class="col">
+            <div class="float-right">
+                <a type="button" class="btn btn-primary" href="#!/tipo_usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-include src="'./app/footer.html'"></ng-include>
