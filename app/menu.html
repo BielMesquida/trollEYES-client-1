@@ -1,5 +1,6 @@
 <nav class=" navbar sticky-top navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#!/home">TrollEYES</a>
+    <img src="favicon.ico" width="30" height="30" alt="">
+  <a class="navbar-brand" href="#!/home">  TrollEYES</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,16 +11,16 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
-          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fab fa-product-hunt"></i> 
           Producto
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='productoPlistController')}" href="#!/producto/plist/10/1">Listado</a>
+            ng-class="{'active':(controller=='productoPlistController')}" href="#!/producto/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='productoNewController')}" href="#!/producto/new">Nuevo</a>
+            ng-class="{'active':(controller=='productoNewController')}" href="#!/producto/new"><i class="far fa-file"></i> Nuevo</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='productoFillController')}" href="#!/producto/fill">Creación aleatoria</a>
+            ng-class="{'active':(controller=='productoFillController')}" href="#!/producto/fill"><i class="fas fa-random"></i> Creación aleatoria</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
@@ -31,71 +32,71 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
             ng-class="{'active':(controller=='tipo_productoPlistController')}"
-            href="#!/tipo_producto/plist/10/1">Listado</a>
+            href="#!/tipo_producto/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='tipo_productoNewController')}" href="#!/tipo_producto/new">Nuevo</a>
+            ng-class="{'active':(controller=='tipo_productoNewController')}" href="#!/tipo_producto/new"><i class="far fa-file"></i> Nuevo</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='tipo_productoFillController')}" href="#!/tipo_producto/fill">Creación
+            ng-class="{'active':(controller=='tipo_productoFillController')}" href="#!/tipo_producto/fill"><i class="fas fa-random"></i> Creación
             aleatoria</a>
       </li>
     </ul>
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authStatus==200" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Compra
+          <i class="fas fa-cash-register"></i> Compra
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" ng-show="authStatus==200"
-            ng-class="{'active':(controller=='compraPlistController')}" href="#!/compra/plist/10/1">Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='compraNewController')}" href="#!/compra/new">Nuevo</a>
+            ng-class="{'active':(controller=='compraPlistController')}" href="#!/compra/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='compraFillController')}" href="#!/compra/fill">Creación aleatoria</a>
+            ng-class="{'active':(controller=='compraNewController')}" href="#!/compra/new"><i class="far fa-file"></i> Nuevo</a>
+          <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
+            ng-class="{'active':(controller=='compraFillController')}" href="#!/compra/fill"><i class="fas fa-random"></i> Creación aleatoria</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" ng-show="authStatus==200" href="" id="navbarDropdown"
-          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-file-invoice"></i> 
           Factura
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" ng-show="authStatus==200"
-            ng-class="{'active':(controller=='facturaPlistController')}" href="#!/factura/plist/10/1">Listado</a>
+            ng-class="{'active':(controller=='facturaPlistController')}" href="#!/factura/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='facturaNewController')}" href="#!/factura/new">Nuevo</a>
+            ng-class="{'active':(controller=='facturaNewController')}" href="#!/factura/new"> <i class="far fa-file"></i> Nuevo</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='facturaFillController')}" href="#!/factura/fill">Creación aleatoria</a>
+            ng-class="{'active':(controller=='facturaFillController')}" href="#!/factura/fill"><i class="fas fa-random"></i> Creación aleatoria</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
-          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-users"></i> 
           Usuario
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/usuario/plist/10/1">Listado</a>
+            ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/usuario/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='usuarioNewController')}" href="#!/usuario/new">Nuevo</a>
+            ng-class="{'active':(controller=='usuarioNewController')}" href="#!/usuario/new"><i class="far fa-file"></i> Nuevo</a>
           <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-            ng-class="{'active':(controller=='usuarioFillController')}" href="#!/usuario/fill">Creación aleatoria</a>
+            ng-class="{'active':(controller=='usuarioFillController')}" href="#!/usuario/fill"><i class="fas fa-random"></i> Creación aleatoria</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Tipo Usuario
+            <i class="fas fa-user-edit"></i> Tipo Usuario
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-              ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/tipo_usuario/plist/10/1">Listado</a>
+              ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/tipo_usuario/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
             <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-              ng-class="{'active':(controller=='usuarioNewController')}" href="#!/tipo_usuario/new">Nuevo</a>
+              ng-class="{'active':(controller=='usuarioNewController')}" href="#!/tipo_usuario/new"><i class="far fa-file"></i> Nuevo</a>
            
         </li>
       </ul>
@@ -103,19 +104,19 @@
       <ul class="navbar-nav align-self-end" id="nav">
         <li class="nav-item" ng-show="true">
           <a class="nav-link" ng-class="{'active': controller=='carritoController'}" href="#!/carrito"><i
-              class="fas fa-shopping-cart"></i></a>
+              class="fas fa-shopping-cart"></i> Carrito</a>
         </li>
         <li class="nav-item" ng-show="authStatus!=200">
-          <a class="nav-link" ng-class="{'active': sitio=='login'}" href="#!/login">Iniciar Sesión <i
-              class="fas fa-sign-in-alt"></i></a>
+          <a class="nav-link" ng-class="{'active': sitio=='login'}" href="#!/login"> <i
+            class="fas fa-sign-in-alt"></i> Iniciar Sesión</a>
         </li>
         <li class="nav-item" ng-show="authStatus==200">
-          <span class="nav-link">Usuari:
+          <span class="nav-link"><i class="fas fa-user"></i>
             {{authUsername.nombre+" "+authUsername.apellido1+" "+authUsername.apellido2}}</span>
         </li>
         <li class="nav-item" ng-show="authStatus==200">
-          <a class="nav-link" ng-class="{'active': sitio=='logout'}" href="#!/logout">Cerrar Sesión <i
-              class="fas fa-sign-out-alt"></i></a>
+          <a class="nav-link" ng-class="{'active': sitio=='logout'}" href="#!/logout"><i
+            class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
         </li>
       </ul>
     </div>

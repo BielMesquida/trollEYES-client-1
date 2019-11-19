@@ -2,7 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Listado de factura</h1>
+      <h1><i class="fas fa-stream"></i> Listado de facturas</h1>
+      <br>
       <div class="row">
         <div class="col">
           <nav aria-label="Paginación">
@@ -30,21 +31,23 @@
           <th>Id</th>
           <th>Fecha</th>
           <th>Iva</th>
-          <th>Id de usuario</th>
+          <th ng-show="authUsername.tipo_usuario_obj.id==1">Id de usuario</th>
           <th>Acciones</th>
         </tr>
         <tr ng-repeat="fila in pagina">
           <td>{{ fila.id }}</td>
           <td>{{ fila.fecha }}</td>
           <td>{{ fila.iva }}</td>
-          <td>{{ fila.usuario_obj.id }}</td>
+          <td ng-show="authUsername.tipo_usuario_obj.id==1">{{ fila.usuario_obj.id }}</td>
          
           <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <a class="btn btn-secondary" ng-show="authUsername.tipo_usuario_obj.id==1" href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
-              <a class="btn btn-secondary" ng-show="authUsername.tipo_usuario_obj.id!=1" href="#!/compra/plist/10/1/{{ fila.id }}"><i class="fas fa-eye"></i></a>
+            <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id==1" role="group" aria-label="Basic example">
+              <a class="btn btn-secondary"  href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-secondary" href="#!/factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
               <a class="btn btn-secondary" href="#!/factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
+            </div>
+            <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id!=1" role="group" aria-label="Basic example">
+              <a class="btn btn-secondary"href="#!/compra/plist/10/1/{{ fila.id }}"><i class="fas fa-eye"></i></a>
             </div>
           </td>
         </tr>
