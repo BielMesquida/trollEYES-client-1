@@ -25,6 +25,7 @@ var miControlador = miModulo.controller(
                     $scope.cantidad = response.data.message.cantidad;
                     $scope.factura_id = response.data.message.factura_obj.id;
                     $scope.producto_id = response.data.message.producto_obj.id;
+                    $scope.producto_descripcion = response.data.message.producto_obj.descripcion;
                   
                   
                 }, function (error) {
@@ -33,13 +34,10 @@ var miControlador = miModulo.controller(
 
             $scope.modificar = function () {
                 const datos = {
-                    id: parseInt($routeParams.id),
-                    codigo: $scope.codigo,
-                    existencias: parseInt($scope.existencias),
-                    precio: $scope.precio,
-                    imagen: $scope.imagen,
-                    descripcion: $scope.descripcion,
-                    tipo_compra_id: parseInt($scope.tipo_compra_id)
+                    id: $routeParams.id,
+                    cantidad: $scope.cantidad,
+                    factura_id: $scope.factura_id,
+                    producto_id: $scope.producto_id,
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)

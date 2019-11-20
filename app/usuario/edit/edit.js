@@ -29,7 +29,8 @@ var miControlador = miModulo.controller(
                     $scope.tipo_usuario_obj = response.data.message.tipo_usuario_obj;
                     $scope.login = response.data.message.login;
                     $scope.email = response.data.message.email;
-                  
+                    $scope.tipo_usuario_descripcion= response.data.message.tipo_usuario_obj.descripcion;
+
                 }, function (error) {
                     $scope.fallo = true;
                 });
@@ -44,7 +45,7 @@ var miControlador = miModulo.controller(
                     login: $scope.login,
                     password: forge_sha256($scope.password),
                     email: $scope.email,
-                    tipo_usuario_id: $scope.tipo_usuario_id
+                    tipo_usuario_id: $scope.tipo_usuario_id,
                                     }
                 var jsonToSend = {
                     data: JSON.stringify(datos)

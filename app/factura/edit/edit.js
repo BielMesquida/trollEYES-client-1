@@ -25,6 +25,7 @@ var miControlador = miModulo.controller(
                     $scope.fecha = response.data.message.fecha;
                     $scope.iva = response.data.message.iva;
                     $scope.usuario_id = response.data.message.usuario_obj.id;
+                    $scope.usuario_login = response.data.message.usuario_obj.login;
                   
                   
                 }, function (error) {
@@ -37,6 +38,7 @@ var miControlador = miModulo.controller(
                     fecha: $scope.fecha,
                     iva: parseInt($scope.iva),
                     usuario_id: $scope.usuario_id,
+                    usuario_login: $scope.usuario_login
                 }
                 var jsonToSend = {
                     data: JSON.stringify(datos)

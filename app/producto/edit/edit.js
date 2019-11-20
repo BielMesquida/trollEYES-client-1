@@ -28,7 +28,7 @@ var miControlador = miModulo.controller(
                     $scope.imagen = response.data.message.imagen;
                     $scope.descripcion = response.data.message.descripcion;
                     $scope.tipo_producto_id = response.data.message.tipo_producto_obj.id;
-                    $scope.tipo_producto_obj = response.data.message.tipo_producto_obj;
+                    $scope.tipo_producto_descripcion = response.data.message.tipo_producto_obj.descripcion;
                   
                 }, function (error) {
                     $scope.fallo = true;
