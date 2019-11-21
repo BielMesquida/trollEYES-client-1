@@ -22,7 +22,7 @@ var miControlador = miModulo.controller(
             promesasService.ajaxGet('factura', $scope.id)
                 .then(function (response) {
                     $scope.id = response.data.message.id;
-                    $scope.fecha = response.data.message.fecha;
+                    $scope.fecha = moment(response.data.message.fecha, 'DD/MM/YYYY HH:mm').toDate();
                     $scope.iva = response.data.message.iva;
                     $scope.usuario_id = response.data.message.usuario_obj.id;
                     $scope.usuario_login = response.data.message.usuario_obj.login;
