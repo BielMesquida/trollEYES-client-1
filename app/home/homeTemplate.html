@@ -13,14 +13,14 @@
       <a href="#!/producto/view/{{producto.id}}">
         <h2>{{producto.descripcion}}</h2>
       </a>
-      <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Solo nos queda(n) {{producto.existencias}}
+      <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Nos queda(n) {{producto.existencias}}
           en stock</strong></p>
       <div id="cod_tipo">
         <p>Precio: {{producto.precio}}€</p>
         <form class="form-group row" id="cod_tipo">
           <div class="col-3"></div>
-          <input class="col-3" type="number" value=1 ng-model="cantidad" id="example-number-input">
-          <button type="button" class="btn btn-primary" ng-click="addCarrito(producto.id,cantidad)">Añadir al
+          <input class="col-3" type="number" min=1 ng-model="cantidad" id="example-number-input">
+          <button type="button" class="btn btn-primary" ng-disabled="cantidad > producto.existencias" ng-click="addCarrito(producto.id,cantidad)">Añadir al
             carrito</button>
         </form>
       </div>

@@ -55,6 +55,7 @@ var miControlador = miModulo.controller(
             }
 
             $scope.addCarrito = function(idProducto, cantidad) {
+                
                 $http({
                     method: 'GET',
                     url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=add&id='+idProducto+'&cantidad='+cantidad

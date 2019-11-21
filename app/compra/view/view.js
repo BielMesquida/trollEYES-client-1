@@ -18,7 +18,7 @@ var miControlador = miModulo.controller(
                 $scope.id = response.data.message.id;
                 $scope.cantidad = response.data.message.cantidad;
                 $scope.factura_id = response.data.message.factura_obj.id;
-                $scope.producto_id = response.data.message.producto_obj.id;
+                $scope.producto_obj = response.data.message.producto_obj;
               
             }, function () {
                 $scope.fallo = true;
