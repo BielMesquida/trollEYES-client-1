@@ -10,7 +10,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='productoPlistController'||controller=='productoNewController'||controller=='productoFillController')}" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fab fa-product-hunt"></i> 
           Producto
         </a>
@@ -25,7 +25,7 @@
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='tipo_productoPlistController'||controller=='tipo_productoNewController'||controller=='tipo_productoFillController')}" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           Tipo producto
         </a>
@@ -43,7 +43,7 @@
 
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='compraPlistController'||controller=='compraNewController'||controller=='compraFillController')}" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <i class="fas fa-cash-register"></i> Compra
         </a>
@@ -58,7 +58,7 @@
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authStatus==200" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='facturaPlistController'||controller=='facturaNewController'||controller=='facturaFillController')}" ng-show="authStatus==200" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-file-invoice"></i> 
           Factura
         </a>
@@ -73,7 +73,7 @@
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+        <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='usuarioPlistController'||controller=='usuarioNewController'||controller=='usuarioFillController')}" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><i class="fas fa-users"></i> 
           Usuario
         </a>
@@ -88,15 +88,15 @@
     </ul>
     <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
+          <a class="nav-link dropdown-toggle" ng-class="{'active':(controller=='tipo_usuarioPlistController'||controller=='tipo_usuarioNewController')}" ng-show="authUsername.tipo_usuario_obj.id==1" href="" id="navbarDropdown"
             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fas fa-user-edit"></i> Tipo Usuario
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-              ng-class="{'active':(controller=='usuarioPlistController')}" href="#!/tipo_usuario/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
+              ng-class="{'active':(controller=='tipo_usuarioPlistController')}" href="#!/tipo_usuario/plist/10/1"><i class="fas fa-stream"></i> Listado</a>
             <a class="dropdown-item" ng-show="authUsername.tipo_usuario_obj.id==1"
-              ng-class="{'active':(controller=='usuarioNewController')}" href="#!/tipo_usuario/new"><i class="far fa-file"></i> Nuevo</a>
+              ng-class="{'active':(controller=='tipo_usuarioNewController')}" href="#!/tipo_usuario/new"><i class="far fa-file"></i> Nuevo</a>
            
         </li>
       </ul>
