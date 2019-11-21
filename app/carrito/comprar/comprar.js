@@ -7,7 +7,6 @@ var miControlador = miModulo.controller(
             }
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
-
             $http({
                 method: 'GET',
                 url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=buy'
