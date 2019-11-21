@@ -94,14 +94,14 @@
 
       <div ng-show="!fallo&&hecho">
         <div class="alert alert-success text-center" role="alert">
-          <h2>El Post se ha actualizado con éxito</h2>
+          <h2>El producto se ha actualizado con éxito</h2>
           <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
           <button class="btn btn-primary" ng-click="volver()">Volver</button>
         </div>
       </div>
       <div ng-show="fallo&&hecho">
         <div class="alert alert-danger text-center" role="alert">
-          <h2>Ha ocurrido un error al actualizar el Post</h2>
+          <h2>Ha ocurrido un error al actualizar el producto</h2>
           <p ng-show="falloMensaje!=''">{{falloMensaje}}</p>
           <button class="btn btn-primary" ng-click="cerrar()">Cerrar</button>
           <button class="btn btn-primary" ng-click="volver()">Volver</button>
