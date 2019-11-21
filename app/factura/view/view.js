@@ -18,7 +18,7 @@ var miControlador = miModulo.controller(
                 $scope.id = response.data.message.id;
                 $scope.fecha = response.data.message.fecha;
                 $scope.iva = response.data.message.iva;
-                $scope.usuario_id = response.data.message.usuario_obj.id;
+                $scope.usuario = response.data.message.usuario_obj;
               
             }, function () {
                 $scope.fallo = true;
