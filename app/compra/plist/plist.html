@@ -37,8 +37,8 @@
         <tr ng-repeat="fila in pagina">
           <td ng-show="authUsername.tipo_usuario_obj.id==1">{{ fila.id }}</td>
           <td>{{ fila.cantidad }}</td>
-          <td>{{ fila.producto_obj.descripcion }}</td>
-          <td ng-show="authUsername.tipo_usuario_obj.id==1">{{ fila.factura_obj.id }}</td>
+          <td><a href="#!/tipo_producto/view/{{fila.producto_obj.id}}"a> {{ fila.producto_obj.id}}</td>
+          <td ng-show="authUsername.tipo_usuario_obj.id==1"><a href="#!/tipo_producto/view/{{fila.factura_obj.id}}"a>{{ fila.factura_obj.id }}</td>
          
           <td>
             <div class="btn-group" role="group" ng-show="authUsername.tipo_usuario_obj.id==1" aria-label="Basic example">

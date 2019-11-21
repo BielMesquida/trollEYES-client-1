@@ -38,7 +38,7 @@
           <td>{{ fila.id }}</td>
           <td>{{ fila.fecha }}</td>
           <td>{{ fila.iva }}</td>
-          <td ng-show="authUsername.tipo_usuario_obj.id==1">{{ fila.usuario_obj.id }}</td>
+          <td ng-show="authUsername.tipo_usuario_obj.id==1"><a href="#!/usuario/view/{{fila.usuario_obj.id}}"a>{{ fila.usuario_obj.login }}</td>
          
           <td>
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id==1" role="group" aria-label="Basic example">
