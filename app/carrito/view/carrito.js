@@ -5,7 +5,7 @@ var miControlador = miModulo.controller(
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
             $scope.controller = "carritoController";
-
+            $scope.cantidad = 1;
             $http({
                 method: 'GET',
                 url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=list'
@@ -61,6 +61,17 @@ var miControlador = miModulo.controller(
                 $http({
                     method: 'GET',
                     url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=remove&id=' + idProducto + '&cantidad=' + cantidad
+                }).then(function (response) {
+                    if (response.status == 200) {
+                        listaoCarro()
+                    } 
+                })
+            }
+
+            $scope.vaciarCarrito = function () {
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=empty'
                 }).then(function (response) {
                     if (response.status == 200) {
                         listaoCarro()

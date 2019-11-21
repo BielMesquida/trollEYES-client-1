@@ -42,7 +42,7 @@
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" class="btn btn-primary" href="#!/usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <a type="button" ng-show="authUsername.tipo_usuario_obj.id==1" class="btn btn-primary" href="#!/usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
         </div>

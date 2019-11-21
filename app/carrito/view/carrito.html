@@ -14,7 +14,7 @@
             <a href="#!/producto/view/{{producto.id}}">
                 <h2>{{producto.descripcion}}</h2>
             </a>
-            <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Solo nos queda(n)
+            <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Nos queda(n)
                     {{producto.existencias}}
                     en stock</strong></p>
 
@@ -23,7 +23,7 @@
                 <div>
                     <form class="form-group row" id="cod_tipo">
                         <input class="col-3" type="number" min=1 ng-model="cantidad">
-                        <button type="button" class="btn btn-primary col-4"
+                        <button type="button" ng-disabled="(cantidad + producto.cantidad) > producto.existencias" class="btn btn-primary col-4"
                             ng-click="addCarrito(producto.id,cantidad)">Añadir</button>
                         <button type="button" class="btn btn-danger col-4"
                             ng-click="delCarrito(producto.id,cantidad)">Eliminar</button>
@@ -34,7 +34,10 @@
     </div>
     <br>
     <div class="row" id="cod_tipo">
-        <button type="button" class="btn btn-primary" ng-click="comprar()">Comprar</button>
+        <div>
+            <button type="button" class="btn btn-danger" ng-click="vaciarCarrito()">Vaciar</button>
+            <button type="button" class="btn btn-primary" ng-click="comprar()">Comprar</button>
+        </div>
         <h3>Total:{{total}}€</h3>
     </div>
 </div>
