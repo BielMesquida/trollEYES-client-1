@@ -1,29 +1,29 @@
 <ng-include src="'./app/menu.html'"></ng-include>
 <div class="container">
     <h2>Carro:</h2>
-    <div id="carta_producto" class="row" ng-repeat="producto in carritoProducto">
+    <div id="carta_producto" class="row" ng-repeat="producto in carrito">
         <div class="col-3">
-            <img src='{{producto.imagen}}' height="180px" width="180px">
+            <img src='{{producto.producto_obj.imagen}}' height="180px" width="180px">
         </div>
         <div class="col-9" id="datos_ficha">
             <div id="cod_tipo">
-                <p>{{producto.tipo_producto_obj.descripcion}}</p>
-                <p class="font-weight-bold">{{producto.codigo}}</p>
+                <p>{{producto.producto_obj.tipo_producto_obj.descripcion}}</p>
+                <p class="font-weight-bold">Cod: {{producto.producto_obj.codigo}}</p>
 
             </div>
             <a href="#!/producto/view/{{producto.id}}">
-                <h2>{{producto.descripcion}}</h2>
+                <h2>{{producto.producto_obj.descripcion}}</h2>
             </a>
-            <p ng-show="producto.existencias <= 50" style="color: crimson"><strong>Nos queda(n)
-                    {{producto.existencias}}
+            <p ng-show="producto.producto_obj.existencias <= 50" style="color: crimson"><strong>Nos queda(n)
+                    {{producto.producto_obj.existencias}}
                     en stock</strong></p>
 
             <div id="cod_tipo">
-                <p>Cantidad: {{producto.cantidad}} | Precio: {{producto.precio}}€</p>
+                <p>Cantidad: {{producto.cantidad}} | Precio: {{producto.producto_obj.precio}}€</p>
                 <div>
                     <form class="form-group row" id="cod_tipo">
                         <input class="col-3" type="number" min=1 ng-model="cantidad">
-                        <button type="button" ng-disabled="(cantidad + producto.cantidad) > producto.existencias" class="btn btn-primary col-4"
+                        <button type="button" ng-disabled="(cantidad + producto.cantidad) > producto.producto_obj.existencias" class="btn btn-primary col-4"
                             ng-click="addCarrito(producto.id,cantidad)">Añadir</button>
                         <button type="button" class="btn btn-danger col-4"
                             ng-click="delCarrito(producto.id,cantidad)">Eliminar</button>
