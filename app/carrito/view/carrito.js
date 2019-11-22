@@ -6,6 +6,7 @@ var miControlador = miModulo.controller(
             $scope.authUsername = auth.data.message;
             $scope.controller = "carritoController";
             $scope.cantidad = 1;
+            
             $http({
                 method: 'GET',
                 url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=list'
@@ -16,7 +17,7 @@ var miControlador = miModulo.controller(
                 $scope.total = 0
             }).then(function (){
                 for (i =0;i<$scope.carrito.length;i++){
-                    getProducto($scope.carrito[i])
+                    $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
                 }
             })
 
@@ -33,16 +34,6 @@ var miControlador = miModulo.controller(
                     for (i =0;i<$scope.carrito.length;i++){
                         getProducto($scope.carrito[i])
                     }
-                })
-            }
-
-            function getProducto(producto) {
-                promesasService.ajaxGet('producto', producto.id)
-                .then(function (response) {
-                    $scope.status = response.data.status;
-                    response.data.message["cantidad"] = producto.cantidad;
-                    $scope.carritoProducto.push(response.data.message);
-                    $scope.total += response.data.message.cantidad * response.data.message.precio
                 })
             }
 
