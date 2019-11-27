@@ -17,7 +17,8 @@ var miControlador = miModulo.controller(
             promesasService.ajaxGet('tipo_producto', $scope.id).then(function (response) {
                 $scope.id = response.data.message.id;
                 $scope.descripcion = response.data.message.descripcion;
-            
+                $scope.link_producto = response.data.message.link_producto;
+ 
               
             }, function () {
                 $scope.fallo = true;

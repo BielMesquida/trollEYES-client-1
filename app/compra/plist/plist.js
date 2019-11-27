@@ -27,7 +27,7 @@ var miControlador = miModulo.controller(
             } else {
                 $http({
                     method: 'POST',
-                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=listfactura&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&factura=' + $routeParams.facturaId
+                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.facturaId+'&filter=factura'
                 }).then(function (response) {
                     $scope.status = response.data.status;
                     $scope.pagina = response.data.message;
