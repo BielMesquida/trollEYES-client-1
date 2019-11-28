@@ -2,14 +2,18 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1><i class="fas fa-stream"></i> Listado de usuario</h1>
+      <h1 ng-show="filter==null"><i class="fas fa-stream"></i> Listado de usuarios</h1>
+      <h1 ng-show="filter!=null"><i class="fas fa-stream"></i> Listado de {{pagina[0].tipo_usuario_obj.descripcion}}</h1>
+
       <div class="row">
         <div class="col">
           <nav aria-label="Paginación">
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="#!/usuario/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
+                <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="#!/usuario/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
+                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="#!/usuario/plist/{{ rppActual }}/{{ p }}/{{filter}}">{{ p }}</a>
+
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -19,7 +23,9 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="#!/usuario/plist/{{ r }}/1">{{ r }}</a>
+                <a ng-show="filter==null"class="page-link" href="#!/usuario/plist/{{ r }}/1">{{ r }}</a>
+                <a ng-show="filter!=null"class="page-link" href="#!/usuario/plist/{{ r }}/1/{{filter}}">{{ r }}</a>
+
               </li>
             </ul>
           </nav>
@@ -45,7 +51,7 @@
           <td>{{ fila.apellido1 }}</td>
           <td>{{ fila.apellido2 }}</td>
           <td>{{ fila.login }}</td>
-          <td>{{fila.email}}</td>
+          <td>{{ fila.email }}</td>
           <td><a href="#!/tipo_usuario/view/{{fila.tipo_usuario_obj.id}}">{{fila.tipo_usuario_obj.descripcion}}</a></td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
