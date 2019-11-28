@@ -2,7 +2,10 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1><i class="fas fa-stream"></i> {{titulo}}</h1>
+      <h1 ng-show="filter1==null"><i class="fas fa-stream"></i> Listado de compras</h1>
+      <h1 ng-show="filter1=='producto'"><i class="fas fa-stream"></i> Compras de {{pagina[0].producto_obj.descripcion}}</h1>
+      <h1 ng-show="filter1=='factura'"><i class="fas fa-stream"></i> Compras de factura {{pagina[0].factura_obj.id}}</h1>
+
       <br>
       <div class="row">
         <div class="col">
@@ -10,7 +13,9 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="#!/compra/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
+                <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="#!/compra/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
+                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="#!/compra/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{filter1}}">{{ p }}</a>
+
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -20,7 +25,9 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="#!/compra/plist/{{ r }}/1">{{ r }}</a>
+                <a ng-show="filter==null"class="page-link" href="#!/compra/plist/{{ r }}/1">{{ r }}</a>
+                <a ng-show="filter!=null"class="page-link" href="#!/compra/plist/{{ r }}/1/{{filter}}/{{filter1}}">{{ r }}</a>
+
               </li>
             </ul>
           </nav>

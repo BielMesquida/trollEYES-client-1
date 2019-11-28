@@ -23,7 +23,7 @@ var miControlador = miModulo.controller(
                 $scope.tipo_usuario_obj = response.data.message.tipo_usuario_obj;
                 $scope.login = response.data.message.login;
                 $scope.email = response.data.message.email;
-
+                $scope.link_factura = response.data.message.link_factura;
             }, function () {
                 $scope.fallo = true;
                 $scope.falloMensaje = "No se ha podido acceder a los datos del servidor";

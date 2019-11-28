@@ -17,7 +17,8 @@
             </tr>
             <tr>
                 <th> Número de usuarios: </th>
-                <td><a href="#!/usuario/plist/10/1/{{id}}">{{ link_usuario}}</a> </td>
+                <td ng-show="link_usuario!=0"><a href="#!/usuario/plist/10/1/{{id}}">{{ link_usuario}}</a> </td>
+                <td ng-show="link_usuario==0">{{ link_usuario}}</td>
             </tr>
             
           

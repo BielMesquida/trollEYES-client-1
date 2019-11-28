@@ -148,7 +148,7 @@ miModulo.config(['$routeProvider',
             }
         });
         //Compra
-        $routeProvider.when('/compra/plist/:rpp/:page/:facturaId?', {
+        $routeProvider.when('/compra/plist/:rpp/:page/:id?/:filter?', {
             templateUrl: 'app/compra/plist/plist.html',
             controller: 'compraPlistController',
             resolve: {
@@ -203,7 +203,7 @@ miModulo.config(['$routeProvider',
             }
         });
         //Factura
-        $routeProvider.when('/factura/plist/:rpp/:page', {
+        $routeProvider.when('/factura/plist/:rpp/:page/:id?', {
             templateUrl: 'app/factura/plist/plist.html',
             controller: 'facturaPlistController',
             resolve: {

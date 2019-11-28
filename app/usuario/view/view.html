@@ -36,9 +36,14 @@
                 <td> {{email}} </td>
             </tr> 
             <tr>
-                    <th>Tipo de Usuario</th>
-                    <td> <a href="#!/tipo_usuario/view/{{tipo_usuario_obj.id}}">{{tipo_usuario_obj.descripcion}}</a> </td>
-                </tr> 
+                <th>Numero de facturas: </th>
+                <td ng-show="link_factura!=0"><a href="#!/factura/plist/10/1/{{id}}">{{link_factura}}</a></td>
+                <td ng-show="link_factura==0">{{link_factura}} </td>
+            </tr>
+            <tr>
+                   <th>Tipo de Usuario</th>
+                   <td > <a href="#!/tipo_usuario/view/{{tipo_usuario_obj.id}}">{{tipo_usuario_obj.descripcion}}</a> </td>
+            </tr> 
         </table>
         <div class="col">
             <div class="float-right">
