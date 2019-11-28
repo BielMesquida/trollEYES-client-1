@@ -29,13 +29,14 @@
         <tr>
           <th>Id</th>
           <th>Descripcion</th>
+          <th>Número de usuarios</th>
           <th>Acciones</th>
 
         </tr>
         <tr ng-repeat="fila in pagina">
           <td>{{ fila.id }}</td>
           <td>{{ fila.descripcion }}</td>
-        
+          <td><a href="#!/usuario/plist/10/1/{{fila.id}}">{{ fila.link_usuario}}</a></td>
          
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">

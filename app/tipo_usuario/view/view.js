@@ -17,7 +17,7 @@ var miControlador = miModulo.controller(
             promesasService.ajaxGet('tipo_usuario', $scope.id).then(function (response) {
                 $scope.id = response.data.message.id;
                 $scope.descripcion = response.data.message.descripcion;
-            
+                $scope.link_usuario = response.data.message.link_usuario;
               
             }, function () {
                 $scope.fallo = true;

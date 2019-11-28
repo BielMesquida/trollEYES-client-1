@@ -9,7 +9,7 @@ miModulo.config(['$routeProvider',
                 }
             }
         })
-        $routeProvider.when('/producto/plist/:rpp/:page', {
+        $routeProvider.when('/producto/plist/:rpp/:page/:id?', {
             templateUrl: 'app/producto/plist/plist.html',
             controller: 'productoPlistController',
             resolve: {
@@ -93,7 +93,7 @@ miModulo.config(['$routeProvider',
         });
 
         //Usuario
-        $routeProvider.when('/usuario/plist/:rpp/:page', {
+        $routeProvider.when('/usuario/plist/:rpp/:page/:id?', {
             templateUrl: 'app/usuario/plist/plist.html',
             controller: 'usuarioPlistController',
             resolve: {

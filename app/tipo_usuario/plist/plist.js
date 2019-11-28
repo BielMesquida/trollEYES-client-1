@@ -12,7 +12,6 @@ var miControlador = miModulo.controller(
             $scope.rppActual = parseInt($routeParams.rpp);
             $scope.rppS = [10, 50, 100];
             $scope.controller = "tipo_usuarioPlistController";
-
             $http({
                 method: 'POST',
                 url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page

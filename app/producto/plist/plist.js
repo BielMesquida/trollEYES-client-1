@@ -12,10 +12,18 @@ var miControlador = miModulo.controller(
             $scope.rppActual = parseInt($routeParams.rpp);
             $scope.rppS = [10, 50, 100];
             $scope.controller = "productoPlistController";
+            $scope.filter = $routeParams.id;
 
+            if($routeParams.id !=null){
+                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_producto'
+                urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount&filter=tipo_producto&id='+ $routeParams.id 
+                }else{
+                    urlgetpage='http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                    urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount'
+                }
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                url: urlgetpage
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -23,7 +31,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount'
+                url: urlgetcount
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
