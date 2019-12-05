@@ -36,12 +36,12 @@
           <th>Id</th>
           <th>Dni</th>
           <th>Nombre</th>
-          <th>Primer Apellido</th>
-          <th>Segundo Apellido</th>
-          <th>Nombre de Usuario</th>
+          <th>1r Apellido</th>
+          <th>2n Apellido</th>
+          <th>Usuario</th>
           <th>Email</th>
           <th>Tipo de Usuario</th>
-
+          <th>Facturas</th>
           <th>Acciones</th>
         </tr>
         <tr ng-repeat="fila in pagina">
@@ -53,6 +53,10 @@
           <td>{{ fila.login }}</td>
           <td>{{ fila.email }}</td>
           <td><a href="#!/tipo_usuario/view/{{fila.tipo_usuario_obj.id}}">{{fila.tipo_usuario_obj.descripcion}}</a></td>
+          <td>
+            <a ng-if="fila.link_factura!=0" href="#!/factura/plist/10/1/{{fila.id}}">{{fila.link_factura}}</a>
+            <p ng-if="fila.link_factura==0">{{fila.link_factura}}</p>
+          </td>
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
               <a class="btn btn-secondary" href="#!/usuario/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>

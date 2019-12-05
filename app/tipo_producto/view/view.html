@@ -17,7 +17,8 @@
             </tr>
             <tr>
                     <th> Número de productos: </th>
-                    <td><a href="#!/producto/plist/10/1/{{id}}">{{ link_producto}}</a> </td>
+                    <td ng-show="link_producto!=0"><a href="#!/producto/plist/10/1/{{id}}">{{ link_producto}}</a> </td>
+                    <td ng-show="link_producto==0">{{ link_producto}} </td>
                 </tr>
           
         </table>

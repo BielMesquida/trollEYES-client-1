@@ -8,24 +8,24 @@
           <label for="descripcion" class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">
             <input type="text" ng-model="descripcion" class="form-control"
-              ng-class="{ 'is-invalid' : !userForm.descripcion.$valid && !userForm.descripcion.$pristine}" name="descripcion"
-              ng-required="true" value="{{producto.descripcion}}" />
-            <div class="invalid-feedback" ng-show="userForm.descripcion.$error.pattern">
-              El operando introducido es incorrecto, sólo debe llevar números
+              ng-class="{ 'is-invalid' : !userForm.descripcion.$valid && !userForm.descripcion.$pristine}"
+              name="descripcion" ng-required="true" value="{{producto.descripcion}}" />
+            <div class="invalid-feedback" ng-show="userForm.descripcion.$error.required">
+              El campo descripcion es obligatorio
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="codigo" class="col-sm-2 col-form-label">Codigo:</label>
           <div class="col-sm-10">
-            <div class="form-group">
-              <input type="text" class="form-control rounded-0"
-                ng-model="codigo" class="form-control"
-                ng-class="{ 'is-invalid' : !userForm.codigo.$valid && !userForm.codigo.$pristine}" name="codigo"
-                ng-required="true" value="{{producto.codigo}}"></textarea>
+            <input type="text" class="form-control" ng-model="codigo"
+              ng-class="{ 'is-invalid' : !userForm.codigo.$valid && !userForm.codigo.$pristine}" name="codigo"
+              ng-required="true" value="{{producto.codigo}}" ng-pattern="/^\d{6}$/">
+            <div class="invalid-feedback" ng-show="userForm.codigo.$error.required">
+              El campo codigo es obligatorio
             </div>
-            <div class="invalid-feedback" ng-show="userForm.op1.$error.pattern">
-              El operando introducido es incorrecto, sólo debe llevar números
+            <div class="invalid-feedback" ng-show="userForm.codigo.$error.pattern">
+              El codigo deben ser 6 digitos
             </div>
           </div>
         </div>
@@ -33,10 +33,13 @@
           <label for="existencias" class="col-sm-2 col-form-label">Existencias:</label>
           <div class="col-sm-10">
             <input type="text" ng-model="existencias" class="form-control"
-              ng-class="{ 'is-invalid' : !userForm.existencias.$valid && !userForm.existencias.$pristine}" name="existencias"
-              ng-required="true" value="{{producto.existencias}}" />
+              ng-class="{ 'is-invalid' : !userForm.existencias.$valid && !userForm.existencias.$pristine}"
+              name="existencias" ng-required="true" value="{{producto.existencias}}" ng-pattern="/^\d+$/" />
+            <div class="invalid-feedback" ng-show="userForm.existencias.$error.required">
+              El campo existencias es obligatorio
+            </div>
             <div class="invalid-feedback" ng-show="userForm.existencias.$error.pattern">
-              El operando introducido es incorrecto, sólo debe llevar números
+              Las existencias solo pueden ser numericas
             </div>
           </div>
         </div>
@@ -44,41 +47,50 @@
           <label for="precio" class="col-sm-2 col-form-label">Precio:</label>
           <div class="col-sm-10">
             <input type="text" ng-model="precio" class="form-control"
-              ng-class="{ 'is-invalid' : !userForm.precio.$valid && !userForm.precio.$pristine}" name="precio"
-              ng-required="true" value="{{producto.precio}}" />
+              ng-class="{ 'is-invalid' : !userForm.precio.$valid && !userForm.precio.$pristine}" 
+              name="precio" ng-required="true" value="{{producto.precio}}" ng-pattern="/^\d+,\d{2}$/"/>
+              <div class="invalid-feedback" ng-show="userForm.precio.$error.required">
+                  El campo precio es obligatorio
+                </div>
             <div class="invalid-feedback" ng-show="userForm.precio.$error.pattern">
-              El operando introducido es incorrecto, sólo debe llevar números
+              El precio obliga a tener dos decimales 
             </div>
           </div>
         </div>
         <div class="form-group row">
           <label for="tipo_producto_id" class="col-sm-2 col-form-label">Tipo producto:</label>
           <div class="col-sm-10">
-              <div class="input-group mb-2 mr-sm-2">
-                <div class="input-group-prepend">
-                  <div class="btn-secondary btn" data-toggle="modal" data-target="#modalTipoProducto">  
-                          <i class="fas fa-search"></i>
-                 </div>
+            <div class="input-group mb-2 mr-sm-2">
+              <div class="input-group-prepend">
+                <div class="btn-secondary btn" data-toggle="modal" data-target="#modalTipoProducto">
+                  <i class="fas fa-search"></i>
                 </div>
-                <input type="text" ng-model="tipo_producto_descripcion" class="form-control"
-                ng-class="{ 'is-invalid' : !userForm.tipo_producto_id.$valid && !userForm.tipo_producto_id.$pristine}" name="tipo_producto_id"
-                ng-required="true" value="{{tipo_producto_descripcion}}" />              </div>
               </div>
+              <input type="text" ng-model="tipo_producto_descripcion" class="form-control"
+                ng-class="{ 'is-invalid' : !userForm.tipo_producto_id.$valid && !userForm.tipo_producto_id.$pristine}"
+                name="tipo_producto_id" ng-required="true" value="{{tipo_producto_descripcion}}" />
+                <div class="invalid-feedback" ng-show="userForm.tipo_producto_descripcion.$error.required">
+                    El campo tipo_producto es obligatorio
+                  </div>
+            </div>
+          </div>
         </div>
-        <tipoproductomodal class="modal fade" id="modalTipoProducto" idtipoproducto="tipo_producto_id" descripcion="tipo_producto_descripcion"></tipoproductomodal>
+        <tipoproductomodal class="modal fade" id="modalTipoProducto" idtipoproducto="tipo_producto_id"
+          descripcion="tipo_producto_descripcion"></tipoproductomodal>
         <div class="form-group row">
           <label for="imagen" class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
             <input type="text" ng-model="imagen" class="form-control"
               ng-class="{ 'is-invalid' : !userForm.imagen.$valid && !userForm.imagen.$pristine}" name="imagen"
               ng-required="true" value="{{producto.imagen}}" />
-            <div class="invalid-feedback" ng-show="userForm.imagen.$error.pattern">
-              El operando introducido es incorrecto, sólo debe llevar números
-            </div>
+              <div class="invalid-feedback" ng-show="userForm.imagen.$error.required">
+                  El campo imagen es obligatorio
+                </div>
           </div>
         </div>
         <div class="float-right">
-          <button type="button" class="btn btn-primary" ng-click="guardar()">Crear nuevo producto</button>
+          <button type="button" class="btn btn-primary" ng-click="guardar()" ng-disabled="userForm.$invalid">Crear nuevo
+            producto</button>
         </div>
       </form>
       <div ng-show="!fallo&&hecho">

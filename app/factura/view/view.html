@@ -20,6 +20,11 @@
                 <td> {{iva}} </td>
             </tr>
             <tr>
+                <th> Compras: </th>
+                <td ng-show="link_compra!=0">  <a href="#!/compra/plist/10/1/{{id}}/factura">{{link_compra}}</a></td>
+                <td ng-show="link_compra==0">{{link_compra}}</a></td>
+            </tr>
+            <tr>
                 <th> Usuario: </th>
                 <td> <a href="#!/usuario/view/{{usuario.id}}">{{usuario.login }}</a> </td>
             </tr>

@@ -19,7 +19,8 @@ var miControlador = miModulo.controller(
                 $scope.fecha = response.data.message.fecha;
                 $scope.iva = response.data.message.iva;
                 $scope.usuario = response.data.message.usuario_obj;
-              
+                $scope.link_compra = response.data.message.link_compra;
+
             }, function () {
                 $scope.fallo = true;
                 $scope.falloMensaje = "No se ha podido acceder a los datos del servidor";

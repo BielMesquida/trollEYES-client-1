@@ -36,7 +36,10 @@
         <tr ng-repeat="fila in pagina">
           <td>{{ fila.id }}</td>
           <td>{{ fila.descripcion }}</td>
-          <td><a href="#!/producto/plist/10/1/{{fila.id}}">{{ fila.link_producto}}</a></td>
+          <td>
+            <a ng-if="fila.link_producto!=0" href="#!/producto/plist/10/1/{{fila.id}}">{{ fila.link_producto}}</a>
+            <p ng-if="fila.link_producto==0">{{ fila.link_producto}}</p>
+          </td>
 
          
           <td>

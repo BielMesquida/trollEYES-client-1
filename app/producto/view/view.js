@@ -22,6 +22,8 @@ var miControlador = miModulo.controller(
                 $scope.precio = response.data.message.precio;
                 $scope.tipo_producto_obj = response.data.message.tipo_producto_obj;
                 $scope.imagen = response.data.message.imagen;
+                $scope.link_compra = response.data.message.link_compra;
+
             }, function () {
                 $scope.fallo = true;
                 $scope.falloMensaje = "No se ha podido acceder a los datos del servidor";

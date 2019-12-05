@@ -37,8 +37,8 @@
         <th>Existencias</th>
         <th>Precio</th>
         <th>Tipo producto</th>
+        <th>Compras</th>
         <th>Imagen</th>
-
         <th>Acciones</th>
       </tr>
       <tr ng-repeat="fila in pagina">
@@ -48,6 +48,10 @@
         <td>{{ fila.existencias }}</td>
         <td>{{ fila.precio }}</td>
         <td><a href="#!/tipo_producto/view/{{fila.tipo_producto_obj.id}}">{{fila.tipo_producto_obj.descripcion}}</a> </td>
+        <td>
+          <a ng-if="fila.link_compra!=0" href="#!/compra/plist/10/1/{{fila.id}}/producto">{{fila.link_compra}} </a>
+          <p ng-if="fila.link_compra==0">{{fila.link_compra}}</p>
+        </td>
         <td><img src="{{fila.imagen}}" height="50px" width="50px"></td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">

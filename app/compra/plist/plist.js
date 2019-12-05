@@ -7,66 +7,46 @@ var miControlador = miModulo.controller(
             }
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
-            $scope.titulo = "Listado de compras";
-            if($scope.authUsername.tipo_usuario_obj.id == 2){
-                $scope.titulo = "Factura ("+$routeParams.facturaId+")";
+            if ($scope.authUsername.tipo_usuario_obj.id == 2) {
+                $scope.titulo = "Factura (" + $routeParams.facturaId + ")";
             }
             $scope.paginaActual = parseInt($routeParams.page);
             $scope.rppActual = parseInt($routeParams.rpp);
             $scope.rppS = [10, 50, 100];
             $scope.controller = "compraPlistController";
-
-            if ($routeParams.facturaId == null) {
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-                }).then(function (response) {
-                    $scope.status = response.data.status;
-                    $scope.pagina = response.data.message;
-                }, function () { })
+            $scope.filter = $routeParams.id;
+            $scope.filter1 = $routeParams.filter;
+            if ($routeParams.id != null) {
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id
             } else {
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.facturaId+'&filter=factura'
-                }).then(function (response) {
-                    $scope.status = response.data.status;
-                    $scope.pagina = response.data.message;
-                }, function () { })
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'
             }
+            $http({
+                method: 'POST',
+                url: urlgetpage
+            }).then(function (response) {
+                $scope.status = response.data.status;
+                $scope.pagina = response.data.message;
+            }, function () { })
 
-            if ($routeParams.facturaId == null) {
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'
-                }).then(function (response) {
-                    $scope.status = response.data.status;
-                    $scope.numRegistros = response.data.message;
-                    $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
-                    $scope.calcPage = [];
-                    for (const p of $scope.rppS) {
-                        const res = $scope.paginaActual / $scope.numPaginas;
-                        const next = Math.ceil($scope.numRegistros / p);
-                        $scope.calcPage.push(Math.round(res * next));
-                    }
-                    paginacion(2);
-                }, function () { })
-            } else {
-                $http({
-                    method: 'POST',
-                    url: 'http://localhost:8081/trolleyes/json?ob=compra&op=listfacturacount&factura='+$routeParams.facturaId
-                }).then(function (response) {
-                    $scope.status = response.data.status;
-                    $scope.numRegistros = response.data.message;
-                    $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
-                    $scope.calcPage = [];
-                    for (const p of $scope.rppS) {
-                        const res = $scope.paginaActual / $scope.numPaginas;
-                        const next = Math.ceil($scope.numRegistros / p);
-                        $scope.calcPage.push(Math.round(res * next));
-                    }
-                    paginacion(2);
-                }, function () { })
-            }
+
+            $http({
+                method: 'POST',
+                url: urlgetcount
+            }).then(function (response) {
+                $scope.status = response.data.status;
+                $scope.numRegistros = response.data.message;
+                $scope.numPaginas = Math.ceil($scope.numRegistros / $routeParams.rpp);
+                $scope.calcPage = [];
+                for (const p of $scope.rppS) {
+                    const res = $scope.paginaActual / $scope.numPaginas;
+                    const next = Math.ceil($scope.numRegistros / p);
+                    $scope.calcPage.push(Math.round(res * next));
+                }
+                paginacion(2);
+            }, function () { })
 
             function paginacion(vecindad) {
                 vecindad++;

@@ -19,7 +19,7 @@ var miControlador = miModulo.controller(
                 $scope.cantidad = response.data.message.cantidad;
                 $scope.factura_id = response.data.message.factura_obj.id;
                 $scope.producto_obj = response.data.message.producto_obj;
-              
+
             }, function () {
                 $scope.fallo = true;
                 $scope.falloMensaje = "No se ha podido acceder a los datos del servidor";
