@@ -50,6 +50,7 @@
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id==1" role="group" aria-label="Basic example">
               <a class="btn btn-secondary"  href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-secondary" href="#!/factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+              <a class="btn btn-secondary" ng-click="print()" href=""><i class="fas fa-print"></i> </a>
               <a class="btn btn-secondary" href="#!/factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id!=1" role="group" aria-label="Basic example">
