@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <h1 ng-show="filter==null"><i class="fas fa-stream"></i> Listado de facturas</h1>
-      <h1 ng-show="filter!=null"><i class="fas fa-stream"></i> Facturas de {{pagina[0].usuario_obj.login}}</h1>
+      <h1 ng-show="filter!=null" id="cod_tipo"><div><i class="fas fa-stream"></i> Facturas de {{pagina[0].usuario_obj.login}}</div> <a href="#!/factura/new/{{ pagina[0].usuario_obj.id }}/usuario"class="btn btn-primary">Nuevo</a></h1>
     <br>
       <div class="row">
         <div class="col">

@@ -13,6 +13,19 @@ var miControlador = miModulo.controller(
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
+            //
+            $scope.usu = $routeParams.usu;
+            if ($scope.usu=="usuario"){
+            promesasService.ajaxGet('usuario', $scope.id)
+            .then(function (response) {
+              $scope.usuario_login = response.data.message.login;
+              
+              
+            }, function (error) {
+                $scope.fallo = true;
+            });
+        }
+            
             //--
             $scope.guardar = function () {
                 const datos = {

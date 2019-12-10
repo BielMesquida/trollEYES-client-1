@@ -121,7 +121,7 @@ var miControlador = miModulo.controller(
                 doc.text("Total:", 145, 280);
                 doc.text("66,66€", 175, 280);
 
-
+                doc.save('factura_de_.pdf');
             }
 
 

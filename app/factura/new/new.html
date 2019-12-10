@@ -39,7 +39,7 @@
                      </div>
                     </div>
                     <input type="text" ng-model="usuario_login" class="form-control"
-                    ng-class="{ 'is-invalid' : !userForm.usuario_id.$valid && !userForm.usuario_id.$pristine}" name="usuario_id"
+                    ng-class="{ 'is-invalid' : !userForm.usuario_id.$valid && !userForm.usuario_id.$pristine}" ng-disabled= "id!=null" name="usuario_id"
                     ng-required="true" value="{{usuario_login}}" />              </div>
                   </div>
            

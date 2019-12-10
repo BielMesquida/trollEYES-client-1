@@ -239,7 +239,7 @@ miModulo.config(['$routeProvider',
                 }
             }
         })
-        $routeProvider.when('/factura/new/', {
+        $routeProvider.when('/factura/new/:id?/:usu?', {
             templateUrl: 'app/factura/new/new.html',
             controller: 'facturaNewController',
             resolve: {
