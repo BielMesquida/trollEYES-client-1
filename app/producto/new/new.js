@@ -17,6 +17,23 @@ var miControlador = miModulo.controller(
             $scope.falloMensaje = "";
             //--
             $scope.guardar = function () {
+                
+            
+                $http({
+                      url: 'http://localhost:8081/trolleyes/json?ob=producto&op=imagen', 
+                      processData: false,
+                      contentType: false,
+                      enctype: 'multipart/form-data',
+                      mimeType:"multipart/form-data",
+                      data: oformData,                         
+                      type: 'post',
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () { })
+
+
+                ////////////////////////////////
                 const datos = {
                     id: $routeParams.id,
                     codigo: $scope.codigo,
@@ -53,6 +70,14 @@ var miControlador = miModulo.controller(
             $scope.cerrar = function () {
                 $location.path('/home');
             };
+
+            $scope.uploadImage = function () {
+               console.log("hola");
+            };
+
+           
+          
+        
         }
     ]
 
