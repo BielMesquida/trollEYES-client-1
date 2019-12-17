@@ -18,9 +18,10 @@ var miControlador = miModulo.controller(
             //--
             $scope.guardar = function () {
                 
-            
+                oformData= new FormData(userForm.imagen);
+                oformData.append("id",4);
                 $http({
-                      url: 'http://localhost:8081/trolleyes/json?ob=producto&op=imagen', 
+                      url: 'http://localhost:8081/trolleyes/json?ob=producto&op=image', 
                       processData: false,
                       contentType: false,
                       enctype: 'multipart/form-data',
@@ -29,7 +30,7 @@ var miControlador = miModulo.controller(
                       type: 'post',
                 }).then(function (response) {
                     $scope.status = response.data.status;
-                    $scope.pagina = response.data.message;
+                    $scope.urlImage = response.data.message;
                 }, function () { })
 
 
@@ -39,7 +40,7 @@ var miControlador = miModulo.controller(
                     codigo: $scope.codigo,
                     existencias: $scope.existencias,
                     precio: $scope.precio,
-                    imagen: $scope.imagen,
+                    imagen: $scope.urlImage,
                     descripcion: $scope.descripcion,
                     tipo_producto_id: $scope.tipo_producto_id
                 }
@@ -62,7 +63,7 @@ var miControlador = miModulo.controller(
                         $scope.hecho = true;
                         $scope.fallo = true;
                         $scope.falloMensaje = error.message + " " + error.stack;
-                    });
+                    }); 
             }
             $scope.volver = function () {
                 window.history.back();

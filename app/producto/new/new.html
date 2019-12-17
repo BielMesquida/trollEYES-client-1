@@ -89,7 +89,7 @@
                 </div>
             <input type="file" ng-model="imagen" 
               ng-class="{ 'is-invalid' : !userForm.imagen.$valid && !userForm.imagen.$pristine}" name="imagen"
-              ng-required="true" value="{{producto.imagen}}" />
+             value="{{producto.imagen}}" />
               <div class="invalid-feedback" ng-show="userForm.imagen.$error.required">
                   El campo imagen es obligatorio
                 </div>
