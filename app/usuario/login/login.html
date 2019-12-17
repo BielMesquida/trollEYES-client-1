@@ -1,15 +1,7 @@
 <ng-include src="'./app/menu.html'"></ng-include>
 <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Tabs Titles -->
-  
-      <!-- Icon -->
-     <!-- <div class="fadeIn first">
-        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-      </div>
-  -->
-  
-      <!-- Login Form -->
+
       <form autocomplete="off">
         <input type="text" id="login" class="fadeIn second" name="login" ng-model="username" ng-class="{ 'is-invalid' : userForm.username.$invalid && !userForm.username.$pristine } " ng-required="true" placeholder="Usuario">
         <div class="invalid-feedback" ng-show="userForm.username.$error.required">
@@ -23,11 +15,6 @@
         <input type="submit" ng-click="login()"  class="fadeIn fourth" value="Enviar">
       </form>
   
-      <!-- Remind Passowrd -->
-      <!--<div id="formFooter">
-        <a class="underlineHover" href="#">¿Has olvidado tu contraseña?</a>
-      </div>
-    -->
     <div class="card rounded-5" ng-show="fallo">
     <div class="card-body">
         <div class="alert alert-danger text-center" role="alert">

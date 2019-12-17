@@ -9,7 +9,7 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="#!/tipo_producto/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
+                <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -19,7 +19,7 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="#!/tipo_producto/plist/{{ r }}/1">{{ r }}</a>
+                <a class="page-link" href="tipo_producto/plist/{{ r }}/1">{{ r }}</a>
               </li>
             </ul>
           </nav>
@@ -37,16 +37,16 @@
           <td>{{ fila.id }}</td>
           <td>{{ fila.descripcion }}</td>
           <td>
-            <a ng-if="fila.link_producto!=0" href="#!/producto/plist/10/1/{{fila.id}}">{{ fila.link_producto}}</a>
+            <a ng-if="fila.link_producto!=0" href="producto/plist/10/1/{{fila.id}}">{{ fila.link_producto}}</a>
             <p ng-if="fila.link_producto==0">{{ fila.link_producto}}</p>
           </td>
 
          
           <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <a class="btn btn-secondary" href="#!/tipo_producto/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
-              <a class="btn btn-secondary" href="#!/tipo_producto/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
-              <a class="btn btn-secondary" href="#!/tipo_producto/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
+              <a class="btn btn-secondary" href="tipo_producto/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
+              <a class="btn btn-secondary" href="tipo_producto/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+              <a class="btn btn-secondary" href="tipo_producto/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
           </td>
         </tr>
@@ -56,7 +56,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="#!/tipo_producto/plist/{{ rppActual }}/{{ p }}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

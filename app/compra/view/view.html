@@ -17,17 +17,17 @@
             </tr>
             <tr>
                 <th> Id de factura: </th>
-                <td> <a href="#!/factura/view/{{factura_id}}">{{ factura_id }}</a> </td>
+                <td> <a href="factura/view/{{factura_id}}">{{ factura_id }}</a> </td>
             </tr>
             <tr>
                 <th> Id de product: </th>
-                <td> <a href="#!/producto/view/{{producto_obj.id}}">{{producto_obj.descripcion}}</a>  </td>
+                <td> <a href="producto/view/{{producto_obj.id}}">{{producto_obj.descripcion}}</a>  </td>
             </tr>
           
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" ng-show="authUsername.tipo_usuario_obj.id==1" class="btn btn-primary" href="#!/compra/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <a type="button" ng-show="authUsername.tipo_usuario_obj.id==1" class="btn btn-primary" href="compra/edit/{{id}}" ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
         </div>

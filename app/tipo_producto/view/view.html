@@ -17,14 +17,14 @@
             </tr>
             <tr>
                     <th> Número de productos: </th>
-                    <td ng-show="link_producto!=0"><a href="#!/producto/plist/10/1/{{id}}">{{ link_producto}}</a> </td>
+                    <td ng-show="link_producto!=0"><a href="producto/plist/10/1/{{id}}">{{ link_producto}}</a> </td>
                     <td ng-show="link_producto==0">{{ link_producto}} </td>
                 </tr>
           
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" class="btn btn-primary" href="#!/tipo_producto/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <a type="button" class="btn btn-primary" href="tipo_producto/edit/{{id}}" ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
         </div>

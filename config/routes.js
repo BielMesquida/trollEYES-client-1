@@ -1,5 +1,5 @@
-miModulo.config(['$routeProvider',
-    function ($routeProvider) {
+miModulo.config(['$routeProvider','$locationProvider',
+    function ($routeProvider,$locationProvider) {
         $routeProvider.when('/', {
             templateUrl: 'app/home/homeTemplate.html',
             controller: 'homeController',
@@ -386,6 +386,8 @@ miModulo.config(['$routeProvider',
                 }
             }
         });
+        $locationProvider.html5Mode(true)
+        //$locationProvider.hashPrefix("");
 
         $routeProvider.otherwise({
             redirectTo: '/'
