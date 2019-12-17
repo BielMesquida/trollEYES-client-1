@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th> Número de usuarios: </th>
-                <td ng-show="link_usuario!=0"><a href="#!/usuario/plist/10/1/{{id}}">{{ link_usuario}}</a> </td>
+                <td ng-show="link_usuario!=0"><a href="usuario/plist/10/1/{{id}}">{{ link_usuario}}</a> </td>
                 <td ng-show="link_usuario==0">{{ link_usuario}}</td>
             </tr>
             
@@ -25,7 +25,7 @@
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" class="btn btn-primary" href="#!/tipo_usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
+                <a type="button" class="btn btn-primary" href="tipo_usuario/edit/{{id}}" ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
         </div>

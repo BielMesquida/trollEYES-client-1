@@ -80,19 +80,37 @@
         <div class="form-group row">
           <label for="imagen" class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
-           <!-- <input type="file" ng-model="imagen" class="form-control"
+  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+  </div>-->
+                </div>
+            <input type="file" ng-model="imagen" 
               ng-class="{ 'is-invalid' : !userForm.imagen.$valid && !userForm.imagen.$pristine}" name="imagen"
               ng-required="true" value="{{producto.imagen}}" />-->
               <input type="file" ng-model="imagen" name="imagen" class="form-control"/>
-              <div class="invalid-feedback" ng-show="userForm.imagen.$error.required">
                   El campo imagen es obligatorio
                 </div>
+              
+              
           </div>
         </div>
+<div>
+
+
+  
+</div>
+
         <div class="float-right">
-          <button type="button" class="btn btn-primary" ng-click="guardar()" ng-disabled="userForm.$invalid">Crear nuevo
-            producto</button>
-        </div>
+            <button type="button" class="btn btn-primary" ng-click="uploadImage();guardar()" ng-disabled="userForm.$invalid">Crear nuevo
+              producto</button>
+          </div>
+        <div class="lds-ring float-right">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        
       </form>
       <div ng-show="!fallo&&hecho">
         <div class="alert alert-success text-center" role="alert">

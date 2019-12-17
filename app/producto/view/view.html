@@ -33,12 +33,12 @@
                     {{link_compra}}
                 </td>
                 <td ng-show="link_compra!=0">
-                    <a href="#!/compra/plist/10/1/{{id}}/producto">{{link_compra}}</a>
+                    <a href="compra/plist/10/1/{{id}}/producto">{{link_compra}}</a>
                 </td>
             </tr>
             <tr>
                 <th> Tipo producto: </th>
-                <td> <a href="#!/tipo_producto/view/{{tipo_producto_obj.id}}">{{tipo_producto_obj.descripcion}}</a>
+                <td> <a href="tipo_producto/view/{{tipo_producto_obj.id}}">{{tipo_producto_obj.descripcion}}</a>
                 </td>
             </tr>
             <tr>
@@ -48,7 +48,7 @@
         </table>
         <div class="col">
             <div class="float-right">
-                <a type="button" class="btn btn-primary" href="#!/producto/edit/{{id}}"
+                <a type="button" class="btn btn-primary" href="producto/edit/{{id}}"
                     ng-show="authStatus==200">Editar</a>
                 <button type="button" class="btn btn-outline-dark" ng-click="volver()">Volver</button>
             </div>
