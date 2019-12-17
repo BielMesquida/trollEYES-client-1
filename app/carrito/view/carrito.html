@@ -19,7 +19,7 @@
                     en stock</strong></p>
 
             <div id="cod_tipo">
-                <p>Cantidad: {{producto.cantidad}} | Precio: {{producto.producto_obj.precio}}€</p>
+                <p>Cantidad: {{producto.cantidad}} | Precio: {{producto.producto_obj.precio.toFixed(2)}}€</p>
                 <div>
                     <form class="form-group row" id="cod_tipo">
                         <input class="col-3" type="number" min=1 ng-model="cantidad">
@@ -33,10 +33,13 @@
         </div>
     </div>
     <br>
+    <div ng-show="carrito.length == 0 || carrito== null">
+        <h2>Mi carro me lo robaron</h2>
+    </div>
     <div class="row" id="cod_tipo">
         <div>
-            <button type="button" class="btn btn-danger" ng-click="vaciarCarrito()">Vaciar</button>
-            <button type="button" class="btn btn-primary" ng-click="comprar()">Comprar</button>
+            <button ng-disabled="carrito.length == 0 || carrito== null" type="button" class="btn btn-danger" ng-click="vaciarCarrito()">Vaciar</button>
+            <button  ng-disabled="carrito.length == 0 || carrito== null" type="button" class="btn btn-primary" ng-click="comprar()">Comprar</button>
         </div>
         <h3>Total:{{total}}€</h3>
     </div>

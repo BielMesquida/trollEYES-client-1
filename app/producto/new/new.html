@@ -80,9 +80,10 @@
         <div class="form-group row">
           <label for="imagen" class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
-            <input type="text" ng-model="imagen" class="form-control"
+           <!-- <input type="file" ng-model="imagen" class="form-control"
               ng-class="{ 'is-invalid' : !userForm.imagen.$valid && !userForm.imagen.$pristine}" name="imagen"
-              ng-required="true" value="{{producto.imagen}}" />
+              ng-required="true" value="{{producto.imagen}}" />-->
+              <input type="file" ng-model="imagen" name="imagen" class="form-control"/>
               <div class="invalid-feedback" ng-show="userForm.imagen.$error.required">
                   El campo imagen es obligatorio
                 </div>

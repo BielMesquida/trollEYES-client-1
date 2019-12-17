@@ -5,6 +5,8 @@ var miControlador = miModulo.controller(
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
             $scope.controller = "carritoController";
+            $scope.carrito = null;
+
             $scope.cantidad = 1;
             
             $http({
@@ -19,6 +21,7 @@ var miControlador = miModulo.controller(
                 for (i =0;i<$scope.carrito.length;i++){
                     $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
                 }
+                $scope.total=$scope.total.toFixed(2);
             })
 
             function listaoCarro(){
@@ -30,10 +33,11 @@ var miControlador = miModulo.controller(
                     $scope.carrito = response.data.message;
                     $scope.carritoProducto = [];
                     $scope.total = 0
-                }).then(function (){
-                    for (i =0;i<$scope.carrito.length;i++){
-                        getProducto($scope.carrito[i])
+                }).then(function () {
+                    for (i = 0; i < $scope.carrito.length; i++) {
+                        $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
                     }
+                    $scope.total=$scope.total.toFixed(2);
                 })
             }
 

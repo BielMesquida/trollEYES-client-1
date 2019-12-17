@@ -46,7 +46,7 @@
         <td>{{ fila.descripcion }}</td>
         <td>{{ fila.codigo }}</td>
         <td>{{ fila.existencias }}</td>
-        <td>{{ fila.precio }}</td>
+        <td>{{ fila.precio.toFixed(2) }}</td>
         <td><a href="#!/tipo_producto/view/{{fila.tipo_producto_obj.id}}">{{fila.tipo_producto_obj.descripcion}}</a> </td>
         <td>
           <a ng-if="fila.link_compra!=0" href="#!/compra/plist/10/1/{{fila.id}}/producto">{{fila.link_compra}} </a>

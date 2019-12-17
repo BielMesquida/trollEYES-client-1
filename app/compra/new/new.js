@@ -13,6 +13,22 @@ var miControlador = miModulo.controller(
             $scope.fallo = false;
             $scope.hecho = false;
             $scope.falloMensaje = "";
+           
+            $scope.facProd = $routeParams.facProd;
+            if ($scope.facProd=="producto"){
+                promesasService.ajaxGet('producto', $scope.id)
+                .then(function (response) {
+                  $scope.producto_descripcion = response.data.message.descripcion;
+                  
+                  
+                }, function (error) {
+                    $scope.fallo = true;
+                });
+                
+                
+            }else if($scope.facProd=="factura"){
+                $scope.factura_id = $routeParams.id;
+            }
             //--
             $scope.guardar = function () {
                 const datos = {

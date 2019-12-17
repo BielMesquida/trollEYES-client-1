@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <h1 ng-show="filter==null"><i class="fas fa-stream"></i> Listado de facturas</h1>
-      <h1 ng-show="filter!=null"><i class="fas fa-stream"></i> Facturas de {{pagina[0].usuario_obj.login}}</h1>
+      <h1 ng-show="filter!=null" id="cod_tipo"><div><i class="fas fa-stream"></i> Facturas de {{pagina[0].usuario_obj.login}}</div> <a href="#!/factura/new/{{ pagina[0].usuario_obj.id }}/usuario"class="btn btn-primary">Nuevo</a></h1>
     <br>
       <div class="row">
         <div class="col">
@@ -50,6 +50,7 @@
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id==1" role="group" aria-label="Basic example">
               <a class="btn btn-secondary"  href="#!/factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
               <a class="btn btn-secondary" href="#!/factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+              <a class="btn btn-secondary" ng-click="print()" href=""><i class="fas fa-print"></i> </a>
               <a class="btn btn-secondary" href="#!/factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id!=1" role="group" aria-label="Basic example">

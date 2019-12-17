@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col">
       <h1 ng-show="filter1==null"><i class="fas fa-stream"></i> Listado de compras</h1>
-      <h1 ng-show="filter1=='producto'"><i class="fas fa-stream"></i> Compras de {{pagina[0].producto_obj.descripcion}}</h1>
-      <h1 ng-show="filter1=='factura'"><i class="fas fa-stream"></i> Compras de factura {{pagina[0].factura_obj.id}}</h1>
-
+      <h1 ng-show="filter1=='producto'" id="cod_tipo"><div><i class="fas fa-stream"> </i> Compras de {{pagina[0].producto_obj.descripcion}}</div> <a href="#!/compra/new/{{ pagina[0].producto_obj.id }}/producto"class="btn btn-primary">Nuevo</a></h1>
+      <h1 ng-show="filter1=='factura'" id="cod_tipo"><div><i class="fas fa-stream "> </i> Compras de factura {{pagina[0].factura_obj.id}}</div>   <a href="#!/compra/new/{{ pagina[0].factura_obj.id }}/factura"class="btn btn-primary">Nuevo</a> </h1>
+        
+     
       <br>
       <div class="row">
         <div class="col">

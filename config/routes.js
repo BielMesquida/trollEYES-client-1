@@ -184,7 +184,7 @@ miModulo.config(['$routeProvider',
                 }
             }
         })
-        $routeProvider.when('/compra/new', {
+        $routeProvider.when('/compra/new/:id?/:facProd?', {
             templateUrl: 'app/compra/new/new.html',
             controller: 'compraNewController',
             resolve: {
@@ -239,7 +239,7 @@ miModulo.config(['$routeProvider',
                 }
             }
         })
-        $routeProvider.when('/factura/new', {
+        $routeProvider.when('/factura/new/:id?/:usu?', {
             templateUrl: 'app/factura/new/new.html',
             controller: 'facturaNewController',
             resolve: {
