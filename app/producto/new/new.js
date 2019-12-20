@@ -18,51 +18,48 @@ var miControlador = miModulo.controller(
             //--
             $scope.guardar = function () {
                 
-            
+                oformData= new FormData(userForm);
+                oformData.append("id",4);
+
                 $http({
-                      url: 'http://localhost:8081/trolleyes/json?ob=producto&op=imagen', 
-                      processData: false,
-                      contentType: false,
-                      enctype: 'multipart/form-data',
-                      mimeType:"multipart/form-data",
-                      data: oformData,                         
-                      type: 'post',
+                    headers: {'Content-Type': undefined},                  
+                    method: 'POST',
+                    url: 'http://localhost:8081/trolleyes/json?ob=producto&op=image', 
+                    data: oformData,                         
                 }).then(function (response) {
                     $scope.status = response.data.status;
-                    $scope.pagina = response.data.message;
-                }, function () { })
-
-
-                ////////////////////////////////
-                const datos = {
-                    id: $routeParams.id,
-                    codigo: $scope.codigo,
-                    existencias: $scope.existencias,
-                    precio: $scope.precio,
-                    imagen: $scope.imagen,
-                    descripcion: $scope.descripcion,
-                    tipo_producto_id: $scope.tipo_producto_id
-                }
-                var jsonToSend = {
-                    data: JSON.stringify(datos)
-                };
-                $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=producto&op=insert', {
-                        params: jsonToSend
-                    })
-                    .then(function (response) {
-                        if (response.data.status != 200) {
+                    $scope.urlImage = response.data.message;
+                }).then(function () {
+                    const datos = {
+                        id: $routeParams.id,
+                        codigo: $scope.codigo,
+                        existencias: $scope.existencias,
+                        precio: parseFloat($scope.precio),
+                        imagen: $scope.urlImage,
+                        descripcion: $scope.descripcion,
+                        tipo_producto_id: $scope.tipo_producto_id
+                    }
+                    var jsonToSend = {
+                        data: JSON.stringify(datos)
+                    };
+                    $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+                    $http.get('http://localhost:8081/trolleyes/json?ob=producto&op=insert', {
+                            params: jsonToSend
+                        })
+                        .then(function (response) {
+                            if (response.data.status != 200) {
+                                $scope.fallo = true;
+                                $scope.falloMensaje = response.data.response;
+                            } else {
+                                $scope.fallo = false;
+                            }
+                            $scope.hecho = true;
+                        }, function (error) {
+                            $scope.hecho = true;
                             $scope.fallo = true;
-                            $scope.falloMensaje = response.data.response;
-                        } else {
-                            $scope.fallo = false;
-                        }
-                        $scope.hecho = true;
-                    }, function (error) {
-                        $scope.hecho = true;
-                        $scope.fallo = true;
-                        $scope.falloMensaje = error.message + " " + error.stack;
-                    });
+                            $scope.falloMensaje = error.message + " " + error.stack;
+                        });
+                })
             }
             $scope.volver = function () {
                 window.history.back();

@@ -2,7 +2,7 @@ miModulo.controller(
     "usuarioLoginController",
     ['$scope', '$http', '$location', 'promesasService',
         function ($scope, $http, $location, promesasService,) {
-            $scope.controller = "usuarioEditController";
+            $scope.controller = "usuarioLoginController";
             //--
             $scope.fallo = false;
             $scope.hecho = false;

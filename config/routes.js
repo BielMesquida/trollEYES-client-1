@@ -63,6 +63,15 @@ miModulo.config(['$routeProvider','$locationProvider',
                 }
             }
         })
+        $routeProvider.when('/register', {
+            templateUrl: 'app/usuario/register/register.html',
+            controller: 'usuarioRegisterController',
+            resolve: {
+                auth: function (promesasService) {
+                    return promesasService.ajaxCheck();
+                }
+            }
+        })
         $routeProvider.when('/login', {
             templateUrl: 'app/usuario/login/login.html',
             controller: 'usuarioLoginController',
@@ -137,7 +146,7 @@ miModulo.config(['$routeProvider','$locationProvider',
                     return promesasService.ajaxCheck();
                 }
             }
-        })
+        });
         $routeProvider.when('/usuario/fill', {
             templateUrl: 'app/usuario/fill/fill.html',
             controller: 'usuarioFillController',
