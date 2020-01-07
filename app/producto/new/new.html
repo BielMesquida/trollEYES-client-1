@@ -86,11 +86,7 @@
   <input type="file" class="custom-file-input" id="customFileLang" lang="es">
   <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
   </div>
-                </div>
-            <input type="file" ng-model="imagen" 
-              ng-class="{ 'is-invalid' : !userForm.imagen.$valid && !userForm.imagen.$pristine}" name="imagen"
-              ng-required="true" value="{{producto.imagen}}" />-->
-
+                </div>-->    
               
             <input type="file" ng-model="imagen" name="imagen" class="form-control" />
             <div class="invalid-feedback" ng-show="userForm.imagen.$error.required">
