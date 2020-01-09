@@ -90,6 +90,9 @@ var miControlador = miModulo.controller(
             return cantidadProd
                 
             }
+            $scope.buscar = function(texto){
+                
+            }
         }
     ]
 )

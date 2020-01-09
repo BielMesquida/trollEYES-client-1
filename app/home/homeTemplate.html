@@ -1,4 +1,14 @@
 <ng-include src="'./app/menu.html'"></ng-include>
+
+  <div class="input-group mb-2 mr-sm-2">
+<div class="input-group-prepend">
+  <div class="btn-secondary btn" ng-click=buscar() >
+    <i class="fas fa-search"></i>
+  </div>
+</div>
+<input type="text" class="form-control" placeholder="Buscar" >
+</div>
+
 <div class="container">
   <div id="carta_producto" class="row" ng-repeat="producto in pagina">
     <div class="col-3">
