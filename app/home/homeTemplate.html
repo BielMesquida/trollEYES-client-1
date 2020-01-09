@@ -20,7 +20,7 @@
         <form class="form-group row" id="cod_tipo">
           <div class="col-3"></div>
           <input class="col-3" type="number" min=1 ng-model="cantidad" id="example-number-input">
-          <button type="button" class="btn btn-primary" ng-disabled="cantidad > producto.existencias" ng-click="addCarrito(producto.id,cantidad)">Añadir al
+          <button type="button" class="btn btn-primary" ng-disabled="sumaCantidad(cantidad, producto.id) > producto.existencias  " ng-click="addCarrito(producto.id,cantidad)">Añadir al
             carrito</button>
         </form>
       </div>
