@@ -72,7 +72,7 @@ miModulo.config(['$routeProvider','$locationProvider',
                 }
             }
         })
-        $routeProvider.when('/login', {
+        $routeProvider.when('/login/:token?', {
             templateUrl: 'app/usuario/login/login.html',
             controller: 'usuarioLoginController',
             css: 'app/usuario/login/login.css',

@@ -11,7 +11,7 @@ miModulo.controller(
             
             $scope.guardar = function () {
                 const datos = {
-                    id: $routeParams.id,
+                    //id: $routeParams.id,
                     dni: $scope.dni,
                     nombre: $scope.nombre,
                     apellido1: $scope.apellido1,
@@ -26,7 +26,7 @@ miModulo.controller(
                     data: JSON.stringify(datos)
                 };
                 $http.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
-                $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=insert', {
+                $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=register', {
                         params: jsonToSend
                     })
                     .then(function (response) {

@@ -1,7 +1,7 @@
 miModulo.controller(
     "usuarioLoginController",
-    ['$scope', '$http', '$location', 'promesasService',
-        function ($scope, $http, $location, promesasService,) {
+    ['$scope', '$http', '$location', 'promesasService', '$routeParams',
+        function ($scope, $http, $location, promesasService, $routeParams) {
             $scope.controller = "usuarioLoginController";
             //--
             $scope.fallo = false;
@@ -9,7 +9,7 @@ miModulo.controller(
             $scope.falloMensaje = "";
             //--
             $scope.login = function () {
-                promesasService.ajaxLogin($scope.username, $scope.password)
+                promesasService.ajaxLogin($scope.username, $scope.password, $routeParams.token)
                     .then(function (response) {
                         if (response.data.status != 200) {
                             $scope.fallo = true;
