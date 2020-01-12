@@ -30,6 +30,27 @@ miModulo.controller(
                 $scope.hecho = false;
                 $scope.falloMensaje = "";
             }
+
+            $scope.recuContra = function (){
+                $http({
+                    method: 'GET',
+                    url: 'http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'
+                }).then(function (response) {
+                    $scope.status = response.data.status;
+                    $scope.pagina = response.data.message;
+                }, function () {})
+            }
             
+            $scope.logAdmin = function(){
+                $scope.username = "trolleyes"
+                $scope.password = "trolleyes"
+                $scope.login();
+            }
+
+            $scope.logClient = function(){
+                $scope.username = "paco"
+                $scope.password = "trolleyes"
+                $scope.login();
+            }
         }
     ])
