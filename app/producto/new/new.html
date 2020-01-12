@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col">
       <h1><i class="far fa-file"></i> Crear un Producto</h1>
-      <form name="userForm" ng-show="!fallo&&!hecho">
+      <form name="userForm" id=uploadForm ng-show="!fallo&&!hecho">
         <div class="form-group row">
           <label for="descripcion" class="col-sm-2 col-form-label">Descripcion:</label>
           <div class="col-sm-10">
@@ -80,6 +80,7 @@
         <div class="form-group row">
           <label for="imagen" class="col-sm-2 col-form-label">Imagen:</label>
           <div class="col-sm-10">
+
             <div class="custom-file">
 
               <input type="file" ng-model="imagen" class="custom-file-input" lang="es"
@@ -104,10 +105,8 @@
             </div>
 
 
-          </div>
         </div>
-        <div>
-        </div>
+
 
         <div class="float-right">
           <button type="button" class="btn btn-primary" ng-click="uploadImage();guardar()"
