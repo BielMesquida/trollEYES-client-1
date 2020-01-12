@@ -15,8 +15,12 @@ miModulo.factory('promesasService', ['$http',
                 })
                 //return $http.get('http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=update', parametros);
             },
-            ajaxLogin: function (username, password) {
-                return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=login&username=' + username + '&password=' + forge_sha256(password));
+            ajaxLogin: function (username, password, token) {
+                if (token != null){
+                    return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=login&username=' + username + '&password=' + forge_sha256(password) + '&token=' + token);
+                } else {
+                    return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=login&username=' + username + '&password=' + forge_sha256(password));
+                }
             },
             ajaxLogout: function () {
                 return $http.get('http://localhost:8081/trolleyes/json?ob=usuario&op=logout');

@@ -1,6 +1,6 @@
 var miControlador = miModulo.controller(
     "carritoController",
-    ['$scope', '$http', 'auth', '$location', '$routeParams', '$window', 'promesasService', '$timeout',
+    ['$scope', '$http', 'auth', '$location', '$routeParams','$window', 'promesasService', '$timeout',
         function ($scope, $http, auth, $location, $routeParams, $window, promesasService, $timeout) {
             $scope.authStatus = auth.data.status;
             $scope.authUsername = auth.data.message;
@@ -9,22 +9,8 @@ var miControlador = miModulo.controller(
 
             $scope.cantidad = 1;
             
+            $http({
 
-/*            $http({
-                method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=list'
-            }).then(function (response) {
-                $scope.status = response.data.status;
-                $scope.carrito = response.data.message;
-                $scope.carritoProducto = [];
-                $scope.total = 0
-            }).then(function () {
-                for (i = 0; i < $scope.carrito.length; i++) {
-                    $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
-                }
-                $scope.total=$scope.total.toFixed(2);
-            })
-*/
             function listaoCarro() {
                 promesasService.ajaxListaCarro().then(function (response) {
                     $scope.status = response.data.status;
@@ -60,7 +46,7 @@ var miControlador = miModulo.controller(
                 }).then(function (response) {
                     if (response.status == 200) {
                         listaoCarro()
-                    }
+                    } 
                 })
             }
 
@@ -71,12 +57,12 @@ var miControlador = miModulo.controller(
                 }).then(function (response) {
                     if (response.status == 200) {
                         listaoCarro()
-                    }
+                    } 
                 })
             }
 
-            $scope.comprar = function () {
-
+            $scope.comprar = function (){
+                
                 $http({
                     method: 'GET',
                     url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=buy'
@@ -86,10 +72,10 @@ var miControlador = miModulo.controller(
                     if ($scope.status == 401) {
                         $location.path('/login');
                     }
-                    if ($scope.status == 200) {
-                        $location.path('/compra/plist/10/1/' + $scope.message + '/factura');
-                    }
                 })
+                        if ($scope.status == 200) {
+                            $location.path('/compra/plist/10/1/' + $scope.message + '/factura');
+                        }
             }
         }
     ]
