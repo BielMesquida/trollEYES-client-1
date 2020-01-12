@@ -70,3 +70,7 @@
       transform: rotate(360deg);
     }
   }
+ label.custom-file-label::after{
+content: "Elegir";
+
+ }

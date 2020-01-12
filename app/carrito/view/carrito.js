@@ -10,36 +10,23 @@ var miControlador = miModulo.controller(
             $scope.cantidad = 1;
             
             $http({
-                method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=list'
-            }).then(function (response) {
-                $scope.status = response.data.status;
-                $scope.carrito = response.data.message;
-                $scope.carritoProducto = [];
-                $scope.total = 0
-            }).then(function (){
-                for (i =0;i<$scope.carrito.length;i++){
-                    $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
-                }
-                $scope.total=$scope.total.toFixed(2);
-            })
 
-            function listaoCarro(){
-                $http({
-                    method: 'GET',
-                    url: 'http://localhost:8081/trolleyes/json?ob=carrito&op=list'
-                }).then(function (response) {
+            function listaoCarro() {
+                promesasService.ajaxListaCarro().then(function (response) {
                     $scope.status = response.data.status;
                     $scope.carrito = response.data.message;
-                    $scope.carritoProducto = [];
+                  //  $scope.carritoProducto = [];
                     $scope.total = 0
                 }).then(function () {
-                    for (i = 0; i < $scope.carrito.length; i++) {
+                    if($scope.carrito != null){
+                         for (i = 0; i < $scope.carrito.length; i++) {
                         $scope.total += $scope.carrito[i].cantidad * $scope.carrito[i].producto_obj.precio
+                    }
                     }
                     $scope.total=$scope.total.toFixed(2);
                 })
             }
+            listaoCarro()
 
             $scope.addCarrito = function (idProducto, cantidad) {
                 $http({

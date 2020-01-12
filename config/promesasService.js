@@ -30,6 +30,9 @@ miModulo.factory('promesasService', ['$http',
             },
             ajaxFill: function (objeto, number) {
                 return $http.get('http://localhost:8081/trolleyes/json?ob=' + objeto + '&op=fill&number=' + number);
+            },
+            ajaxListaCarro: function (){
+                return $http.get('http://localhost:8081/trolleyes/json?ob=carrito&op=list');
             }
         }
     }

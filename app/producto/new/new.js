@@ -68,9 +68,7 @@ var miControlador = miModulo.controller(
                 $location.path('/home');
             };
 
-            $scope.uploadImage = function () {
-               console.log("hola");
-            };
+        
 
            
           
