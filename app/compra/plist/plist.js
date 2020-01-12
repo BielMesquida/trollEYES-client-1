@@ -16,12 +16,16 @@ var miControlador = miModulo.controller(
             $scope.controller = "compraPlistController";
             $scope.filter = $routeParams.id;
             $scope.filter1 = $routeParams.filter;
+            $scope.buscar = $routeParams.buscar;
+            if($routeParams.buscar ==undefined){
+                $scope.buscar = "";
+            }
             if ($routeParams.id != null) {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter//+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id//+'&buscar='+ $scope.buscar
             } else {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page//+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'+'&buscar='//+ $scope.buscar
             }
             $http({
                 method: 'POST',
@@ -64,6 +68,9 @@ var miControlador = miModulo.controller(
                 }
             }
 
+            $scope.buscar1 = function(){
+                $location.path('/compra/plist/10/1/'+$scope.buscar);
+            }
 
 
 

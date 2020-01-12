@@ -1,13 +1,18 @@
 <ng-include src="'./app/menu.html'"></ng-include>
 
+
+
+<form name="buscarForm">
   <div class="input-group mb-2 mr-sm-2">
-<div class="input-group-prepend">
-  <div class="btn-secondary btn" ng-click=buscar() >
-    <i class="fas fa-search"></i>
+    <div class="input-group-prepend">
+      <div class="btn-secondary btn" ng-click="buscar1()">
+        <i class="fas fa-search"></i>
+      </div>
+      <input type="text" class="form-control" placeholder="Buscar"ng-model="buscar" name="buscar">
+    </div>
   </div>
-</div>
-<input type="text" class="form-control" placeholder="Buscar" >
-</div>
+</form>
+
 
 <div class="container">
   <div id="carta_producto" class="row" ng-repeat="producto in pagina">
@@ -30,7 +35,9 @@
         <form class="form-group row" id="cod_tipo">
           <div class="col-3"></div>
           <input class="col-3" type="number" min=1 ng-model="cantidad" id="example-number-input">
-          <button type="button" class="btn btn-primary" ng-disabled="sumaCantidad(cantidad, producto.id) > producto.existencias  " ng-click="addCarrito(producto.id,cantidad)">Añadir al
+          <button type="button" class="btn btn-primary"
+            ng-disabled="sumaCantidad(cantidad, producto.id) > producto.existencias  "
+            ng-click="addCarrito(producto.id,cantidad)">Añadir al
             carrito</button>
         </form>
       </div>
@@ -46,7 +53,7 @@
           <ul class="pagination">
             <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
               ng-repeat="p in botonera track by $index">
-              <a class="page-link" ng-if="p != '...'" href="home/{{ rppActual }}/{{ p }}">{{ p }}</a>
+              <a class="page-link" ng-if="p != '...'" href="home/{{ rppActual }}/{{ p }}/{{ buscar }}">{{ p }}</a>
               <span class="page-link" ng-if="p == '...'">{{ p }}</span>
             </li>
           </ul>
@@ -55,4 +62,4 @@
     </div>
   </div>
 </div>
-  <ng-include src="'./app/footer.html'"></ng-include>
+<ng-include src="'./app/footer.html'"></ng-include>

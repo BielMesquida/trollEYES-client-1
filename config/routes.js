@@ -1,6 +1,6 @@
 miModulo.config(['$routeProvider','$locationProvider',
     function ($routeProvider,$locationProvider) {
-        $routeProvider.when('/', {
+        $routeProvider.when('/home/:buscar?', {
             templateUrl: 'app/home/homeTemplate.html',
             controller: 'homeController',
             resolve: {
@@ -54,7 +54,7 @@ miModulo.config(['$routeProvider','$locationProvider',
                 }
             }
         })
-        $routeProvider.when('/home/:rpp/:page', {
+        $routeProvider.when('/home/:rpp/:page/:buscar?', {
             templateUrl: 'app/home/homeTemplate.html',
             controller: 'homeController',
             resolve: {
@@ -313,7 +313,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Tipo usuario
-        $routeProvider.when('/tipo_usuario/plist/:rpp/:page', {
+        $routeProvider.when('/tipo_usuario/plist/:rpp/:page/', {
             templateUrl: 'app/tipo_usuario/plist/plist.html',
             controller: 'tipo_usuarioPlistController',
             resolve: {
@@ -390,7 +390,7 @@ miModulo.config(['$routeProvider','$locationProvider',
         //$locationProvider.hashPrefix("");
 
         $routeProvider.otherwise({
-            redirectTo: '/'
+            redirectTo: '/home'
         })
 
     }

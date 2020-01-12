@@ -13,13 +13,16 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "usuarioPlistController";
             $scope.filter = $routeParams.id;
-
+            $scope.buscar = $routeParams.buscar;
+            if($routeParams.buscar ==undefined){
+                $scope.buscar = "";
+            }
             if($routeParams.id !=null){
-                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_usuario'
-                urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount&filter=tipo_usuario&id='+ $routeParams.id 
+                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_usuario'+'&buscar='+ $scope.buscar
+                urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount&filter=tipo_usuario&id='+ $routeParams.id +'&buscar='+ $scope.buscar
                 }else{
-                    urlgetpage='http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-                    urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'
+                    urlgetpage='http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
+                    urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'+'&buscar='+ $scope.buscar
                 }
             $http({
                 method: 'POST',
@@ -61,7 +64,9 @@ var miControlador = miModulo.controller(
                 }
             }
 
-
+            $scope.buscar1 = function(){
+                $location.path('/usuario/plist/10/1/'+$scope.buscar);
+            }
 
 
         }

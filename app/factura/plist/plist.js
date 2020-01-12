@@ -13,16 +13,20 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "facturaPlistController";
             $scope.filter = $routeParams.id;
+            $scope.buscar = $routeParams.buscar;
+            if($routeParams.buscar ==undefined){
+                $scope.buscar = "";
+            }
             if ($routeParams.id != null) {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=usuario'
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount&filter=usuario&id=' + $routeParams.id
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=usuario'+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount&filter=usuario&id=' + $routeParams.id+'&buscar='+ $scope.buscar
             } else if ($scope.authUsername.tipo_usuario_obj.id == 2) {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $scope.authUsername.id + '&filter=usuario'
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount&filter=usuario&id=' + $scope.authUsername.id
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $scope.authUsername.id + '&filter=usuario'+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount&filter=usuario&id=' + $scope.authUsername.id+'&buscar='+ $scope.buscar
             }
             else {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount'
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=factura&op=getcount'+'&buscar='+ $scope.buscar
             }
             
 
@@ -66,7 +70,11 @@ var miControlador = miModulo.controller(
                 }
             }
 
-            
+            $scope.buscar1 = function(){
+                $location.path('/factura/plist/10/1/'+$scope.buscar);
+             
+            }
+
 
           $scope.print= function(datos)  {
             urlgetpagecompra = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + datos.id + '&filter=factura'

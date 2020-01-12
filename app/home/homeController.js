@@ -6,8 +6,10 @@ var miControlador = miModulo.controller(
             $scope.authUsername = auth.data.message;
             $scope.controller = "homeController";
             $scope.cantidad = 1;
-
-
+            $scope.buscar = $routeParams.buscar;
+            if($routeParams.buscar ==null){
+                $scope.buscar = "";
+            }
             if (!$routeParams.page) {
                 $scope.paginaActual = 1;
             } else {
@@ -24,7 +26,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual + '&buscar=' + $scope.buscar
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -32,7 +34,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount'
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount&buscar=' + $scope.buscar
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
@@ -90,9 +92,11 @@ var miControlador = miModulo.controller(
             return cantidadProd
                 
             }
-            $scope.buscar = function(texto){
-                
-            }
+         $scope.buscar1 = function(){
+            $location.path('/home/'+$scope.buscar);
+
+
+         }
         }
     ]
 )
