@@ -9,7 +9,6 @@ var miControlador = miModulo.controller(
 
             $scope.cantidad = 1;
             
-            $http({
 
             function listaoCarro() {
                 promesasService.ajaxListaCarro().then(function (response) {
