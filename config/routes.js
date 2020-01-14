@@ -157,7 +157,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Compra
-        $routeProvider.when('/compra/plist/:rpp/:page/:id?/:filter?', {
+        $routeProvider.when('/compra/plist/:rpp/:page/:id?/:filter?/:buscar?', {
             templateUrl: 'app/compra/plist/plist.html',
             controller: 'compraPlistController',
             resolve: {

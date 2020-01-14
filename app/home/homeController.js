@@ -6,9 +6,9 @@ var miControlador = miModulo.controller(
             $scope.authUsername = auth.data.message;
             $scope.controller = "homeController";
             $scope.cantidad = 1;
-            $scope.buscar1 = $routeParams.buscar;
+            $scope.buscar = $routeParams.buscar;
             if ($routeParams.buscar == null) {
-                $scope.buscar1 = "";
+                $scope.buscar = "";
             }
             if (!$routeParams.page) {
                 $scope.paginaActual = 1;
@@ -26,7 +26,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual + '&buscar=' + $scope.buscar1
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual + '&buscar=' + $scope.buscar
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -34,7 +34,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount&buscar=' + $scope.buscar1
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount&buscar=' + $scope.buscar
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
@@ -93,11 +93,8 @@ var miControlador = miModulo.controller(
                 return cantidadProd
 
             }
-            $scope.buscar2 = function (b) {
-
-                console.log($scope.controller);
-                console.log($scope.b);
-
+            $scope.buscarFunc = function (b) {
+              
                 $location.path('/home/' + b);
 
 

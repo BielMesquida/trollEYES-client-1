@@ -13,7 +13,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 ng-show="filter1==null"><i class="fas fa-stream"></i> Listado de compras</h1>
+      <h1 ng-show="filter1==''"><i class="fas fa-stream"></i> Listado de compras</h1>
       <h1 ng-show="filter1=='producto'" id="cod_tipo"><div><i class="fas fa-stream"> </i> Compras de {{pagina[0].producto_obj.descripcion}}</div> <a href="compra/new/{{ pagina[0].producto_obj.id }}/producto"class="btn btn-primary">Nuevo</a></h1>
       <h1 ng-show="filter1=='factura'" id="cod_tipo"><div><i class="fas fa-stream "> </i> Compras de factura {{pagina[0].factura_obj.id}}</div>   <a href="compra/new/{{ pagina[0].factura_obj.id }}/factura"class="btn btn-primary">Nuevo</a> </h1>
         
@@ -25,8 +25,8 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}">{{ p }}</a>
-                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{filter1}}">{{ p }}</a>
+                <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}///{{ buscar }}">{{ p }}</a>
+                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{filter1}}/{{ buscar }}">{{ p }}</a>
 
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
@@ -37,8 +37,8 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a ng-show="filter==null"class="page-link" href="compra/plist/{{ r }}/1">{{ r }}</a>
-                <a ng-show="filter!=null"class="page-link" href="compra/plist/{{ r }}/1/{{filter}}/{{filter1}}">{{ r }}</a>
+                <a ng-show="filter==null"class="page-link" href="compra/plist/{{ r }}/1///{{ buscar }}">{{ r }}</a>
+                <a ng-show="filter!=null"class="page-link" href="compra/plist/{{ r }}/1/{{filter}}/{{filter1}}/{{ buscar }}">{{ r }}</a>
 
               </li>
             </ul>
@@ -76,7 +76,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}///{{ buscar }}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

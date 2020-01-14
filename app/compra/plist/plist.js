@@ -20,12 +20,18 @@ var miControlador = miModulo.controller(
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
+            if($routeParams.id==undefined || $routeParams.filter==undefined){
+                $scope.filter = "";
+                $scope.filter1 = "";
+
+            }
+
             if ($routeParams.id != null) {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter//+'&buscar='+ $scope.buscar
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id//+'&buscar='+ $scope.buscar
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id+'&buscar='+ $scope.buscar
             } else {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page//+'&buscar='+ $scope.buscar
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'+'&buscar='//+ $scope.buscar
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'+'&buscar='+ $scope.buscar
             }
             $http({
                 method: 'POST',
@@ -68,8 +74,10 @@ var miControlador = miModulo.controller(
                 }
             }
 
-            $scope.buscar1 = function(){
-                $location.path('/compra/plist/10/1/'+$scope.buscar);
+            $scope.buscarFunc = function (b) {
+                $location.path('/compra/plist/10/1/'+ $scope.filter +'/'+ $scope.filter1 +'/' + b);
+
+
             }
 
 
