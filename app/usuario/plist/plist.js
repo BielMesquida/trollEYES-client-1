@@ -17,6 +17,9 @@ var miControlador = miModulo.controller(
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
+            if($routeParams.id ==undefined){
+                $scope.filter = "";
+            }
             if($routeParams.id !=null){
                 urlgetpage= 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_usuario'+'&buscar='+ $scope.buscar
                 urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount&filter=tipo_usuario&id='+ $routeParams.id +'&buscar='+ $scope.buscar
@@ -64,8 +67,8 @@ var miControlador = miModulo.controller(
                 }
             }
 
-            $scope.buscar1 = function(){
-                $location.path('/usuario/plist/10/1/'+$scope.buscar);
+            $scope.buscarFunc = function(b){
+                $location.path('/usuario/plist/10/1/'+$scope.filter+'/'+b);
             }
 
 

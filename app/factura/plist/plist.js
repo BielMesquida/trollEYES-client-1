@@ -14,6 +14,9 @@ var miControlador = miModulo.controller(
             $scope.controller = "facturaPlistController";
             $scope.filter = $routeParams.id;
             $scope.buscar = $routeParams.buscar;
+            if($routeParams.id == undefined){
+                $scope.filter = "";
+            }
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
@@ -70,8 +73,8 @@ var miControlador = miModulo.controller(
                 }
             }
 
-            $scope.buscar1 = function(){
-                $location.path('/factura/plist/10/1/'+$scope.buscar);
+            $scope.buscarFunc = function(b){
+                $location.path('/factura/plist/10/1/'+$scope.filter+'/'+b);
              
             }
 

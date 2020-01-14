@@ -55,8 +55,8 @@ var miControlador = miModulo.controller(
                     }
                 }
             }
-            $scope.buscar1 = function(){
-                $location.path('/tipo_usuario/plist/10/1/'+$scope.buscar);
+            $scope.buscarFunc = function(b){
+                $location.path('/tipo_usuario/plist/10/1/'+b);
             }
 
 
