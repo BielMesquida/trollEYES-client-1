@@ -17,6 +17,9 @@ var miControlador = miModulo.controller(
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
+            if($routeParams.order !=null){
+                console.log($routeParams.order);
+            }
             if($routeParams.id !=null){
                 urlgetpage= 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_producto'+'&buscar='+ $scope.buscar
                 urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount&filter=tipo_producto&id='+ $routeParams.id +'&buscar='+ $scope.buscar
