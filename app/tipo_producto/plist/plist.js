@@ -13,12 +13,22 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "tipo_productoPlistController";
             $scope.buscar = $routeParams.buscar;
+            $scope.ordenar = $routeParams.order;
+            $scope.ascordesc = $routeParams.ascdesc;
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
+            if($routeParams.order==undefined){
+                $scope.ordenar = "id";
+
+            }
+            if($routeParams.ascdesc==undefined){
+                $scope.ascordesc = "asc";
+            }
+           
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
+                url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -61,7 +71,11 @@ var miControlador = miModulo.controller(
              
             }
 
+            $scope.ordenarFunc = function(){
+                console.log($scope.ordenar)
+                $location.path('/tipo_producto/plist/10/1/'+$scope.buscar+'/'+$scope.ordenar);
 
+            }
         }
     ]
 )

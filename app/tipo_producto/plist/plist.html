@@ -39,8 +39,17 @@
       </div>
       <table class="table">
         <tr>
-          <th>Id</th>
-          <th>Descripcion</th>
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="tipo_producto/plist/10/1/{{buscar}}/id/desc" >Id<i  ng-show="ordenar == 'id'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="tipo_producto/plist/10/1/{{buscar}}/id/asc" >Id<i ng-show="ordenar == 'id'" class="fas fa-arrow-down"></i></a>
+          </th>
+         
+          <th >
+            <a ng-show="ascordesc == 'asc' " href="tipo_producto/plist/10/1/{{buscar}}/descripcion/desc" >Descripcion<i ng-show="ordenar == 'descripcion'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="tipo_producto/plist/10/1/{{buscar}}/descripcion/asc" >Descripcion<i ng-show="ordenar == 'descripcion'" class="fas fa-arrow-down"></i></a>
+          </th>
+         
+
           <th>Número de productos</th>
           <th>Acciones</th>
 

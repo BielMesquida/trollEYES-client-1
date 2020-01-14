@@ -9,7 +9,7 @@ miModulo.config(['$routeProvider','$locationProvider',
                 }
             }
         })
-        $routeProvider.when('/producto/plist/:rpp/:page/:id?/:buscar?', {
+        $routeProvider.when('/producto/plist/:rpp/:page/:id?/:buscar?/:order?', {
             templateUrl: 'app/producto/plist/plist.html',
             controller: 'productoPlistController',
             resolve: {
@@ -267,7 +267,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Tipo producto
-        $routeProvider.when('/tipo_producto/plist/:rpp/:page/:buscar?', {
+        $routeProvider.when('/tipo_producto/plist/:rpp/:page/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/tipo_producto/plist/plist.html',
             controller: 'tipo_productoPlistController',
             resolve: {
