@@ -59,14 +59,11 @@
           </td>
 
           <td>
-            <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id==1" role="group" aria-label="Basic example">
+            <div class="btn-group" role="group" aria-label="Basic example">
               <a class="btn btn-secondary"  href="factura/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
-              <a class="btn btn-secondary" href="factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
-              <a class="btn btn-secondary" ng-click="print(fila)" href=""><i class="fas fa-print"></i> </a>
-              <a class="btn btn-secondary" href="factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
-            </div>
-            <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id!=1" role="group" aria-label="Basic example">
-              <a class="btn btn-secondary"href="compra/plist/10/1/{{ fila.id }}"><i class="fas fa-eye"></i></a>
+              <a class="btn btn-secondary" ng-show="fila.canUpdate" href="factura/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+              <a class="btn btn-secondary" ng-show="fila.link_compra > 0" ng-click="print(fila)" href=""><i class="fas fa-print"></i> </a>
+              <a class="btn btn-secondary" ng-show="fila.canRemove" href="factura/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
           </td>
         </tr>

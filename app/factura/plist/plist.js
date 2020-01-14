@@ -77,7 +77,8 @@ var miControlador = miModulo.controller(
 
 
           $scope.print= function(datos)  {
-            urlgetpagecompra = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + datos.id + '&filter=factura'
+            urlgetpagecompra = 'http://localhost:8081/trolleyes/json?ob=compra&op=getall&id=' + datos.id + '&filter=factura'
+            
             $http({
                 method: 'POST',
                 url: urlgetpagecompra
@@ -138,7 +139,7 @@ var miControlador = miModulo.controller(
                 doc.setFillColor(240);
                 doc.rect(100, 241, 95, 15, 'F');
                 doc.text("Base imponible:", 120, 250);
-                doc.text(totalPrecio+"€", 170, 250);
+                doc.text(totalPrecio.toFixed(2)+"€", 170, 250);
                 doc.text("IVA:", 147, 265);
                 doc.text(datos.iva+"%", 170, 265);
                 doc.setFillColor(240);

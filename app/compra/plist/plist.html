@@ -62,8 +62,8 @@
           <td>
             <div class="btn-group" role="group" ng-show="authUsername.tipo_usuario_obj.id==1" aria-label="Basic example">
               <a class="btn btn-secondary" href="compra/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
-              <a class="btn btn-secondary" href="compra/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
-              <a class="btn btn-secondary" href="compra/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
+              <a class="btn btn-secondary" ng-show="fila.canUpdate" href="compra/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+              <a class="btn btn-secondary" ng-show="fila.canRemove" href="compra/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
             </div>
             <div class="btn-group" ng-show="authUsername.tipo_usuario_obj.id!=1" role="group" aria-label="Basic example">
               <a class="btn btn-secondary"href="compra/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
