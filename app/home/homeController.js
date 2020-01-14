@@ -6,9 +6,9 @@ var miControlador = miModulo.controller(
             $scope.authUsername = auth.data.message;
             $scope.controller = "homeController";
             $scope.cantidad = 1;
-            $scope.buscar = $routeParams.buscar;
-            if($routeParams.buscar ==null){
-                $scope.buscar = "";
+            $scope.buscar1 = $routeParams.buscar;
+            if ($routeParams.buscar == null) {
+                $scope.buscar1 = "";
             }
             if (!$routeParams.page) {
                 $scope.paginaActual = 1;
@@ -26,7 +26,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual + '&buscar=' + $scope.buscar
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual + '&buscar=' + $scope.buscar1
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -34,7 +34,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'GET',
-                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount&buscar=' + $scope.buscar
+                url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getcount&buscar=' + $scope.buscar1
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
@@ -79,24 +79,29 @@ var miControlador = miModulo.controller(
                     $scope.carrito = response.data.message;
                 })
 
-            }listaoCarro()
-            $scope.sumaCantidad = function(cantidadProd, idProd) {
-              
-                if($scope.carrito != null){
-                for (i = 0; i < $scope.carrito.length; i++) {
-                    if ($scope.carrito[i].id== idProd) {
-                        return cantidadProd + $scope.carrito[i].cantidad 
+            } 
+            listaoCarro();
+            $scope.sumaCantidad = function (cantidadProd, idProd) {
+
+                if ($scope.carrito != null) {
+                    for (i = 0; i < $scope.carrito.length; i++) {
+                        if ($scope.carrito[i].id == idProd) {
+                            return cantidadProd + $scope.carrito[i].cantidad
+                        }
                     }
                 }
+                return cantidadProd
+
             }
-            return cantidadProd
-                
-            }
-         $scope.buscar1 = function(){
-            $location.path('/home/'+$scope.buscar);
+            $scope.buscar2 = function (b) {
+
+                console.log($scope.controller);
+                console.log($scope.b);
+
+                $location.path('/home/' + b);
 
 
-         }
+            }
         }
     ]
 )
