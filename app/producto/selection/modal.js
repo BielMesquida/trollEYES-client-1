@@ -68,11 +68,12 @@ function addModalVarController($http,$scope) {
             $scope.status = response.data.status;
             $scope.pagina = response.data.message;
         }, function () {})
-    
+        paginacion(2);
 
      }
      $scope.recargarRpp = function(r){
         $scope.rppActual = r;
+        $scope.paginaActual =1;
        $http({
            method: 'POST',
            url: 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual

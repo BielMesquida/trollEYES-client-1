@@ -9,7 +9,7 @@ miModulo.config(['$routeProvider','$locationProvider',
                 }
             }
         })
-        $routeProvider.when('/producto/plist/:rpp/:page/:id?/:buscar?/:order?', {
+        $routeProvider.when('/producto/plist/:rpp/:page/:id?/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/producto/plist/plist.html',
             controller: 'productoPlistController',
             resolve: {

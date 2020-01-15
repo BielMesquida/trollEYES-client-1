@@ -73,9 +73,11 @@ function addModalVarController($http,$scope) {
      }
      $scope.recargarRpp = function(r){
         $scope.rppActual = r;
+        $scope.paginaActual = 1;
+
        $http({
            method: 'POST',
-           url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+           url: 'http://localhost:8081/trolleyes/json?ob=tipo_producto&op=getpage&rpp=' + $scope.rppActual + '&page=1'
        }).then(function (response) {
            $scope.status = response.data.status;
            $scope.pagina = response.data.message;

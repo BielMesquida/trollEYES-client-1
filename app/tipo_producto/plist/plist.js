@@ -71,11 +71,10 @@ var miControlador = miModulo.controller(
              
             }
 
-            $scope.ordenarFunc = function(){
-                console.log($scope.ordenar)
+           /* $scope.ordenarFunc = function(){
                 $location.path('/tipo_producto/plist/10/1/'+$scope.buscar+'/'+$scope.ordenar);
 
-            }
+            }*/
         }
     ]
 )

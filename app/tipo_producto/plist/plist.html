@@ -21,7 +21,7 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}/{{ buscar }}">{{ p }}</a>
+                <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}</a>
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -31,7 +31,7 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="tipo_producto/plist/{{ r }}/1/{{ buscar }}">{{ r }}</a>
+                <a class="page-link" href="tipo_producto/plist/{{ r }}/1/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ r }}</a>
               </li>
             </ul>
           </nav>
@@ -77,7 +77,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}/{{ buscar }}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="tipo_producto/plist/{{ rppActual }}/{{ p }}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

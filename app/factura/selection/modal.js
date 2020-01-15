@@ -20,7 +20,7 @@ function addModalVarController($http,$scope) {
 
     $http({
         method: 'POST',
-        url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+        url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=1' + $scope.paginaActual
     }).then(function (response) {
         $scope.status = response.data.status;
         $scope.pagina = response.data.message;
@@ -67,13 +67,14 @@ function addModalVarController($http,$scope) {
             $scope.pagina = response.data.message;
         }, function () {})
     
-
+        paginacion(2);
      }
      $scope.recargarRpp = function(r){
         $scope.rppActual = r;
+        $scope.paginaActual=1;
        $http({
            method: 'POST',
-           url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page=' + $scope.paginaActual
+           url: 'http://localhost:8081/trolleyes/json?ob=factura&op=getpage&rpp=' + $scope.rppActual + '&page='+$scope.paginaActual 
        }).then(function (response) {
            $scope.status = response.data.status;
            $scope.pagina = response.data.message;
@@ -91,6 +92,7 @@ function addModalVarController($http,$scope) {
             const next = Math.ceil($scope.numRegistros / p);
             $scope.calcPage.push(Math.round(res * next));
         }
+     
         paginacion(2);
     }, function () {})
 

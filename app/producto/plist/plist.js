@@ -14,21 +14,27 @@ var miControlador = miModulo.controller(
             $scope.controller = "productoPlistController";
             $scope.filter = $routeParams.id;
              $scope.buscar = $routeParams.buscar;
+             $scope.ordenar = $routeParams.order;
+             $scope.ascordesc = $routeParams.ascdesc;
              if($routeParams.id ==undefined){
                 $scope.filter = "";
             }
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
-            if($routeParams.order !=null){
-                console.log($routeParams.order);
+            if($routeParams.order==undefined){
+                $scope.ordenar = "id";
+
+            }
+            if($routeParams.ascdesc==undefined){
+                $scope.ascordesc = "asc";
             }
             if($routeParams.id !=null){
-                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_producto'+'&buscar='+ $scope.buscar
-                urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount&filter=tipo_producto&id='+ $routeParams.id +'&buscar='+ $scope.buscar
+                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_producto'+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount&filter=tipo_producto&id='+ $routeParams.id +'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
                 }else{
-                    urlgetpage='http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page +'&buscar='+ $scope.buscar
-                    urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount' +'&buscar='+ $scope.buscar
+                    urlgetpage='http://localhost:8081/trolleyes/json?ob=producto&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page +'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                    urlgetcount='http://localhost:8081/trolleyes/json?ob=producto&op=getcount' +'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
                 }
             $http({
                 method: 'POST',
@@ -75,7 +81,7 @@ var miControlador = miModulo.controller(
                 $location.path('/producto/plist/10/1/'+$scope.filter+'/'+b);
              
             }
-
+           
         }
     ]
 )
