@@ -23,7 +23,7 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="factura/plist/{{ rppActual }}/{{ p }}/{{ filter }}/{{ buscar }}">{{ p }}</a>
+                <a class="page-link" ng-if="p != '...'" href="factura/plist/{{ rppActual }}/{{ p }}/{{ filter }}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}</a>
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -33,7 +33,7 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="factura/plist/{{ r }}/1/{{ filter }}/{{ buscar }}">{{ r }}</a>
+                <a class="page-link" href="factura/plist/{{ r }}/1/{{ filter }}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ r }}</a>
               </li>
             </ul>
           </nav>
@@ -41,9 +41,20 @@
       </div>
       <table class="table">
         <tr>
-          <th>Id</th>
-          <th>Fecha</th>
-          <th>Iva</th>
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/id/desc" >Id<i  ng-show="ordenar == 'id'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/id/asc" >Id<i ng-show="ordenar == 'id'" class="fas fa-arrow-down"></i></a>
+          </th>          
+
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/fecha/desc" >Fecha<i  ng-show="ordenar == 'fecha'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/fecha/asc" >Fecha<i ng-show="ordenar == 'fecha'" class="fas fa-arrow-down"></i></a>
+          </th>
+       
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/iva/desc" >Iva<i  ng-show="ordenar == 'iva'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="factura/plist/10/1/{{filter}}/{{buscar}}/iva/asc" >Iva<i ng-show="ordenar == 'iva'" class="fas fa-arrow-down"></i></a>
+          </th>
           <th ng-show="authUsername.tipo_usuario_obj.id==1">Usuario</th>
           <th>Linea de pedidos</th>
           <th>Acciones</th>
@@ -76,7 +87,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="factura/plist/{{ rppActual }}/{{ p }}//{{ buscar }}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="factura/plist/{{ rppActual }}/{{ p }}//{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

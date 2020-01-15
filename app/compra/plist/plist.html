@@ -26,7 +26,7 @@
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
               <!--  <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}///{{ buscar }}">{{ p }}</a> -->
-                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{filter1}}/{{ buscar }}">{{ p }}</a>
+                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{filter1}}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}</a>
 
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
@@ -38,7 +38,7 @@
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
                 <a ng-show="filter==null"class="page-link" href="compra/plist/{{ r }}/1///{{ buscar }}">{{ r }}</a>
-                <a ng-show="filter!=null"class="page-link" href="compra/plist/{{ r }}/1/{{filter}}/{{filter1}}/{{ buscar }}">{{ r }}</a>
+                <a ng-show="filter!=null"class="page-link" href="compra/plist/{{ r }}/1/{{filter}}/{{filter1}}/{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ r }}</a>
 
               </li>
             </ul>
@@ -47,8 +47,16 @@
       </div>
       <table class="table">
         <tr>
-          <th ng-show="authUsername.tipo_usuario_obj.id==1">Id</th>
-          <th>Cantidad</th>
+          <th ng-show="authUsername.tipo_usuario_obj.id==1">
+            <a ng-show="ascordesc == 'asc' " href="compra/plist/10/1/{{filter}}/{{filter1}}/{{buscar}}/id/desc" >Id<i  ng-show="ordenar == 'id'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="compra/plist/10/1/{{filter}}/{{filter1}}/{{buscar}}/id/asc" >Id<i ng-show="ordenar == 'id'" class="fas fa-arrow-down"></i></a>
+          </th>
+         
+            <th>
+            <a ng-show="ascordesc == 'asc' " href="compra/plist/10/1/{{filter}}/{{filter1}}/{{buscar}}/cantidad/desc" >Cantidad<i  ng-show="ordenar == 'cantidad'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="compra/plist/10/1/{{filter}}/{{filter1}}/{{buscar}}/cantidad/asc" >Cantidad<i ng-show="ordenar == 'cantidad'" class="fas fa-arrow-down"></i></a>
+            </th>
+
           <th>Producto</th>
           <th ng-show="authUsername.tipo_usuario_obj.id==1">Factura</th>
           <th>Acciones</th>
@@ -76,7 +84,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}///{{ buscar }}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="compra/plist/{{ rppActual }}/{{ p }}///{{ buscar }}/{{ordenar}}/{{ascordesc}}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

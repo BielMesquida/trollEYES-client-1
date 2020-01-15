@@ -24,7 +24,7 @@
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
                <!-- <a ng-show="filter==null" class="page-link" ng-if="p != '...'" href="usuario/plist/{{ rppActual }}/{{ p }}">{{ p }}</a> -->
-                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="usuario/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{buscar}}">{{ p }}</a>
+                <a ng-show="filter!=null" class="page-link" ng-if="p != '...'" href="usuario/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ p }}</a>
 
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
@@ -36,7 +36,7 @@
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
                <!-- <a ng-show="filter==null"class="page-link" href="usuario/plist/{{ r }}/1">{{ r }}</a>-->
-                <a ng-show="filter!=null"class="page-link" href="usuario/plist/{{ r }}/1/{{filter}}/{{buscar}}">{{ r }}</a>
+                <a ng-show="filter!=null"class="page-link" href="usuario/plist/{{ r }}/1/{{filter}}/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ r }}</a>
 
               </li>
             </ul>
@@ -45,13 +45,43 @@
       </div>
       <table class="table">
         <tr>
-          <th>Id</th>
-          <th>Dni</th>
-          <th>Nombre</th>
-          <th>1r Apellido</th>
-          <th>2n Apellido</th>
-          <th>Usuario</th>
-          <th>Email</th>
+         {{ascordesc}}
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/id/desc" >Id<i  ng-show="ordenar == 'id'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/id/asc" >Id<i ng-show="ordenar == 'id'" class="fas fa-arrow-down"></i></a>
+            </th>
+      
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/dni/desc" >Dni<i  ng-show="ordenar == 'dni'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/dni/asc" >Dni<i ng-show="ordenar == 'dni'" class="fas fa-arrow-down"></i></a>
+            </th>
+      
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/nombre/desc" >Nombre<i  ng-show="ordenar == 'nombre'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/nombre/asc" >Nombre<i ng-show="ordenar == 'nombre'" class="fas fa-arrow-down"></i></a>
+            </th>
+
+        
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/apellido1/desc" >1r Apellido<i  ng-show="ordenar == 'apellido1'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/apellido1/asc" >1r Apellido<i ng-show="ordenar == 'apellido1'" class="fas fa-arrow-down"></i></a>
+            </th>
+
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/apellido2/desc" >2n Apellido<i  ng-show="ordenar == 'apellido2'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/apellido2/asc" >2n Apellido<i ng-show="ordenar == 'apellido2'" class="fas fa-arrow-down"></i></a>
+            </th>
+
+         
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/login/desc" >Usuario<i  ng-show="ordenar == 'login'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/login/asc" >Usuario<i ng-show="ordenar == 'login'" class="fas fa-arrow-down"></i></a>
+            </th>
+  
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/email/desc" >Email<i  ng-show="ordenar == 'email'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="usuario/plist/10/1/{{filter}}/{{buscar}}/email/asc" >Email<i ng-show="ordenar == 'email'" class="fas fa-arrow-down"></i></a>
+            </th>
           <th>Tipo de Usuario</th>
           <th>Facturas</th>
           <th>Acciones</th>
@@ -83,7 +113,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="usuario/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{buscar}}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="usuario/plist/{{ rppActual }}/{{ p }}/{{filter}}/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

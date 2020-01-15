@@ -21,7 +21,7 @@
             <ul class="pagination">
               <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
                 ng-repeat="p in botonera track by $index">
-                <a class="page-link" ng-if="p != '...'" href="tipo_usuario/plist/{{ rppActual }}/{{ p }}/{{buscar}}">{{ p }}</a>
+                <a class="page-link" ng-if="p != '...'" href="tipo_usuario/plist/{{ rppActual }}/{{ p }}/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ p }}</a>
                 <span class="page-link" ng-if="p == '...'">{{ p }}</span>
               </li>
             </ul>
@@ -31,7 +31,7 @@
           <nav aria-label="Registros por página">
             <ul class="pagination float-right">
               <li class="page-item" ng-class="{'active':(rppActual==r)}" ng-repeat="r in rppS">
-                <a class="page-link" href="tipo_usuario/plist/{{ r }}/1/{{buscar}}">{{ r }}</a>
+                <a class="page-link" href="tipo_usuario/plist/{{ r }}/1/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ r }}</a>
               </li>
             </ul>
           </nav>
@@ -39,8 +39,16 @@
       </div>
       <table class="table">
         <tr>
-          <th>Id</th>
-          <th>Descripcion</th>
+         
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="tipo_usuario/plist/10/1/{{buscar}}/id/desc" >Id<i  ng-show="ordenar == 'id'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="tipo_usuario/plist/10/1/{{buscar}}/id/asc" >Id<i ng-show="ordenar == 'id'" class="fas fa-arrow-down"></i></a>
+            </th>
+        
+          <th>
+            <a ng-show="ascordesc == 'asc' " href="tipo_usuario/plist/10/1/{{buscar}}/descripcion/desc" >Descripcion<i  ng-show="ordenar == 'descripcion'" class="fas fa-arrow-up"></i></a>
+            <a ng-show="ascordesc == 'desc' " href="tipo_usuario/plist/10/1/{{buscar}}/descripcion/asc" >Descripcion<i ng-show="ordenar == 'descripcion'" class="fas fa-arrow-down"></i></a>
+            </th>
           <th>Número de usuarios</th>
           <th>Acciones</th>
 
@@ -67,7 +75,7 @@
         <ul class="pagination">
           <li class="page-item" ng-class="{'active':(paginaActual==p)}" ng-disabled="p == '...'"
             ng-repeat="p in botonera track by $index">
-            <a class="page-link" ng-if="p != '...'" href="tipo_usuario/plist/{{ rppActual }}/{{ p }}/{{buscar}}">{{ p }}
+            <a class="page-link" ng-if="p != '...'" href="tipo_usuario/plist/{{ rppActual }}/{{ p }}/{{buscar}}/{{ordenar}}/{{ascordesc}}">{{ p }}
             </a>
             <span class="page-link" ng-if="p == '...'">{{ p }}</span>
           </li>

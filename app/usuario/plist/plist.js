@@ -14,6 +14,15 @@ var miControlador = miModulo.controller(
             $scope.controller = "usuarioPlistController";
             $scope.filter = $routeParams.id;
             $scope.buscar = $routeParams.buscar;
+            $scope.ordenar = $routeParams.order;
+            $scope.ascordesc = $routeParams.ascdesc;
+            if($routeParams.order==undefined){
+                $scope.ordenar = "id";
+
+            }
+            if($routeParams.ascdesc==undefined){
+                $scope.ascordesc = "asc";
+            }
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
@@ -21,11 +30,11 @@ var miControlador = miModulo.controller(
                 $scope.filter = "";
             }
             if($routeParams.id !=null){
-                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_usuario'+'&buscar='+ $scope.buscar
-                urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount&filter=tipo_usuario&id='+ $routeParams.id +'&buscar='+ $scope.buscar
+                urlgetpage= 'http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&id='+$routeParams.id + '&filter=tipo_usuario'+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount&filter=tipo_usuario&id='+ $routeParams.id +'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
                 }else{
-                    urlgetpage='http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
-                    urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'+'&buscar='+ $scope.buscar
+                    urlgetpage='http://localhost:8081/trolleyes/json?ob=usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                    urlgetcount='http://localhost:8081/trolleyes/json?ob=usuario&op=getcount'+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
                 }
             $http({
                 method: 'POST',

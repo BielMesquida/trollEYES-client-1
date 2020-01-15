@@ -102,7 +102,7 @@ miModulo.config(['$routeProvider','$locationProvider',
         });
 
         //Usuario
-        $routeProvider.when('/usuario/plist/:rpp/:page/:id?/:buscar?', {
+        $routeProvider.when('/usuario/plist/:rpp/:page/:id?/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/usuario/plist/plist.html',
             controller: 'usuarioPlistController',
             resolve: {
@@ -157,7 +157,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Compra
-        $routeProvider.when('/compra/plist/:rpp/:page/:id?/:filter?/:buscar?', {
+        $routeProvider.when('/compra/plist/:rpp/:page/:id?/:filter?/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/compra/plist/plist.html',
             controller: 'compraPlistController',
             resolve: {
@@ -212,7 +212,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Factura
-        $routeProvider.when('/factura/plist/:rpp/:page/:id?/:buscar?', {
+        $routeProvider.when('/factura/plist/:rpp/:page/:id?/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/factura/plist/plist.html',
             controller: 'facturaPlistController',
             resolve: {
@@ -322,7 +322,7 @@ miModulo.config(['$routeProvider','$locationProvider',
             }
         });
         //Tipo usuario
-        $routeProvider.when('/tipo_usuario/plist/:rpp/:page/:buscar?', {
+        $routeProvider.when('/tipo_usuario/plist/:rpp/:page/:buscar?/:order?/:ascdesc?', {
             templateUrl: 'app/tipo_usuario/plist/plist.html',
             controller: 'tipo_usuarioPlistController',
             resolve: {

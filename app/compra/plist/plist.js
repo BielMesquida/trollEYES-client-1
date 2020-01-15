@@ -17,6 +17,15 @@ var miControlador = miModulo.controller(
             $scope.filter = $routeParams.id;
             $scope.filter1 = $routeParams.filter;
             $scope.buscar = $routeParams.buscar;
+            $scope.ordenar = $routeParams.order;
+            $scope.ascordesc = $routeParams.ascdesc;
+            if($routeParams.order==undefined){
+                $scope.ordenar = "id";
+
+            }
+            if($routeParams.ascdesc==undefined){
+                $scope.ascordesc = "asc";
+            }
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
@@ -27,11 +36,11 @@ var miControlador = miModulo.controller(
             }
 
             if ($routeParams.id != null) {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter+'&buscar='+ $scope.buscar
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id+'&buscar='+ $scope.buscar
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page + '&id=' + $routeParams.id + '&filter=' + $routeParams.filter+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount&filter=' + $routeParams.filter + '&id=' + $routeParams.id+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
             } else {
-                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
-                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'+'&buscar='+ $scope.buscar
+                urlgetpage = 'http://localhost:8081/trolleyes/json?ob=compra&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
+                urlgetcount = 'http://localhost:8081/trolleyes/json?ob=compra&op=getcount'+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
             }
             $http({
                 method: 'POST',

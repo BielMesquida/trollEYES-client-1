@@ -13,12 +13,21 @@ var miControlador = miModulo.controller(
             $scope.rppS = [10, 50, 100];
             $scope.controller = "tipo_usuarioPlistController";
             $scope.buscar = $routeParams.buscar;
+            $scope.ordenar = $routeParams.order;
+            $scope.ascordesc = $routeParams.ascdesc;
+            if($routeParams.order==undefined){
+                $scope.ordenar = "id";
+
+            }
+            if($routeParams.ascdesc==undefined){
+                $scope.ascordesc = "asc";
+            }
             if($routeParams.buscar ==undefined){
                 $scope.buscar = "";
             }
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar
+                url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getpage&rpp=' + $routeParams.rpp + '&page=' + $routeParams.page+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.pagina = response.data.message;
@@ -26,7 +35,7 @@ var miControlador = miModulo.controller(
 
             $http({
                 method: 'POST',
-                url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getcount'+'&buscar='+ $scope.buscar
+                url: 'http://localhost:8081/trolleyes/json?ob=tipo_usuario&op=getcount'+'&buscar='+ $scope.buscar+'&order='+$scope.ordenar+','+$scope.ascordesc
             }).then(function (response) {
                 $scope.status = response.data.status;
                 $scope.numRegistros = response.data.message;
