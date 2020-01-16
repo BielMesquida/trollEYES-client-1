@@ -71,10 +71,11 @@ var miControlador = miModulo.controller(
                     if ($scope.status == 401) {
                         $location.path('/login');
                     }
+                    if ($scope.status == 200) {
+                        $location.path('/compra/plist/10/1/' + $scope.message + '/factura');
+                    }
                 })
-                        if ($scope.status == 200) {
-                            $location.path('/compra/plist/10/1/' + $scope.message + '/factura');
-                        }
+                        
             }
         }
     ]

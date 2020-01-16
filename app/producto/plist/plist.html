@@ -87,8 +87,8 @@
         <td>
           <div class="btn-group" role="group" aria-label="Basic example">
             <a class="btn btn-secondary" href="producto/view/{{ fila.id }}"><i class="fas fa-eye"></i></a>
-            <a class="btn btn-secondary" href="producto/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
-            <a class="btn btn-secondary" href="producto/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
+            <a class="btn btn-secondary" ng-show="fila.canUpdate" href="producto/edit/{{ fila.id }}"><i class="fas fa-edit"></i></a>
+            <a class="btn btn-secondary" ng-show="fila.canRemove" href="producto/remove/{{ fila.id }}"><i class="fas fa-trash-alt"></i></a>
           </div>
         </td>
       </tr>
